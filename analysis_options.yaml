@@ -30,7 +30,6 @@ dart_code_metrics:
     maximum-nesting-level: 5
   metrics-exclude:
     - test/**
-    -
   rules:
     - newline-before-return
     - no-boolean-literal-compare
@@ -45,10 +44,7 @@ dart_code_metrics:
     - double-literal-format
     - prefer-const-border-radius
     - prefer_extracting_callbacks
-    - avoid-ignoring-return-values
-    - member-ordering-extended:
-        alphabetize: true
-    - no-magic-number
+    - member-ordering-extended
     - prefer-extracting-callbacks
     - no-object-declaration
   anti-patterns:

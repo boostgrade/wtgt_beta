@@ -11,17 +11,17 @@ part 'settings_store.g.dart';
 class SettingsStore = _SettingsStore with _$SettingsStore;
 
 abstract class _SettingsStore extends ViewModel with Store {
+  @observable
+  ThemeMode? themeMode;
+
+  final SettingsBloc _bloc;
+
   _SettingsStore(
     this._bloc,
     ErrorHandler errorHandler,
   ) : super(errorHandler) {
     observeBloc<SettingsState, SettingsBloc>(_bloc, _handleStates);
   }
-
-  final SettingsBloc _bloc;
-
-  @observable
-  ThemeMode? themeMode;
 
   @action
   void updateTheme(ThemeMode? mode) {

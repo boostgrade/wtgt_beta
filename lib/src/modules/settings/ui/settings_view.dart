@@ -9,9 +9,9 @@ import 'package:where_to_go_today/src/ui/base/view_model_disposer_mixin.dart';
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class SettingsView extends StatefulWidget {
-  const SettingsView({Key? key, required this.store}) : super(key: key);
-
   final SettingsStore store;
+
+  const SettingsView({Key? key, required this.store}) : super(key: key);
 
   @override
   State<SettingsView> createState() => _SettingsViewState();
@@ -54,7 +54,7 @@ class _SettingsViewState extends State<SettingsView> with ViewModelDisposerMixin
               DropdownMenuItem(
                 child: Text('null'),
                 value: null,
-              )
+              ),
             ],
           ),
         ),
