@@ -15,7 +15,7 @@ for dir in ./ready_tasks/*; do
 
                 path_to_file=$file
 
-                gh issue create -t "$name_of_file" -F "$path_to_file" -R boostgrade/wtgt_alpha
+                gh issue create -t "$name_of_file" -F "$path_to_file" -R boostgrade/wtgt_beta
 
             fi
         done
