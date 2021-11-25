@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-abstract class AppTypography{
+class AppTypography{
 
   static const String fontFamily='Montserrat';
 
