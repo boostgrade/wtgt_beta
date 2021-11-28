@@ -10,7 +10,7 @@ class AppTypography{
     fontSize: fontSize,
     color: const Color(0x00000000),);
 
-  TextStyle SemiBold(double fontSize,FontWeight fontWeight)=>TextStyle(
+  TextStyle semiBold(double fontSize,FontWeight fontWeight)=>TextStyle(
       fontFamily: fontFamily,
       fontWeight: fontWeight,
       fontSize: fontSize,
