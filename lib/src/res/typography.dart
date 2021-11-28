@@ -8,12 +8,12 @@ class AppTypography{
     fontFamily: fontFamily,
     fontWeight: FontWeight.w400,
     fontSize: fontSize,
-    color: const Color(0x00000000));
+    color: const Color(0x00000000),);
 
   TextStyle SemiBold(double fontSize,FontWeight fontWeight)=>TextStyle(
       fontFamily: fontFamily,
       fontWeight: fontWeight,
       fontSize: fontSize,
-      color: const Color(0x00000000));
+      color: const Color(0x00000000),);
 
 }
