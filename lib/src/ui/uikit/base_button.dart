@@ -49,8 +49,8 @@ class _BaseButtonState extends State<BaseButton> {
     );
   }
   onTap(void Function() onPressed){
-    setState((){widget.status=Status.loading;});
+    widget.status=Status.loading;
     onPressed;
-    setState(() {widget.status = Status.active;});
+    widget.status = Status.active;
   }
 }
