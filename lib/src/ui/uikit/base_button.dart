@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:where_to_go_today/src/res/typography.dart';
 import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
+import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 
 enum Status { active, inavctive, loading }
 class BaseButton extends StatefulWidget{
 
   final String label;
   final void Function() onPressed;
-  Status status;
 
-  BaseButton(
-      {Key? key,required this.label, required this.onPressed, required this.status,}) : super(key : key);
+  const BaseButton(
+      {Key? key,required this.label, required this.onPressed,}) : super(key : key);
 
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +19,7 @@ class BaseButton extends StatefulWidget{
 
 }
 class _BaseButtonState extends State<BaseButton> {
-
+  final Status status=Status.active;
   @override
   Widget build(BuildContext context) {
     return Opacity(
@@ -43,7 +43,7 @@ class _BaseButtonState extends State<BaseButton> {
             : onTap(widget.onPressed),
         child: Text(
           widget.label,
-          style: AppTypography().semiBold(16, FontWeight.w500),
+          style: AppTypography.normal16,
         ),
       ),
     );
