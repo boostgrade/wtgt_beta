@@ -14,7 +14,15 @@ class MainScreen extends StatelessWidget {
   // TODO(artem-zaitsev): здесь будут храниться экраны, когда появятся
   final List<Widget> _screens = [
     Center(
-      child: BaseButton(onPressed: ()=>print(Status.active), status: Status.active, label: 'Test',),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BaseButton(onPressed: ()=>print(Status.active), status: Status.active, label: 'Test',),
+          BaseButton(onPressed: ()=>print(Status.inactive), status: Status.inactive, label: 'Test',),
+          BaseButton(onPressed: ()=>print(Status.loading), status: Status.loading, label: 'Test',),
+        ],
+      ),
     ),
     const Center(
       child: Text('Screen 1'),

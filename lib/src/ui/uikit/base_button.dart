@@ -36,7 +36,15 @@ class BaseButton extends StatelessWidget {
         onPressed: status == Status.inactive
             ? null
             : onPressed,
-        child: Text(
+        child: status == Status.loading
+            ? const SizedBox(
+            width: 30,
+            height: 30,
+            child: CircularProgressIndicator(
+                color: ProjectColors.buttonStrokeBlue,
+            ),
+        )
+            :Text(
           label,
           style: AppTypography.normal16,
         ),
