@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:where_to_go_today/src/res/typography.dart';
 import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
 import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 
-enum Status { active, inavctive, loading }
-class BaseButton extends StatefulWidget{
+enum Status { active, inactive, loading }
+
+class BaseButton extends StatelessWidget {
 
   final String label;
   final void Function() onPressed;
+  final Status status;
 
   const BaseButton(
-      {Key? key,required this.label, required this.onPressed,}) : super(key : key);
+      {Key? key,required this.label, required this.onPressed, required this.status,}) : super(key : key);
 
-  @override
-  State<StatefulWidget> createState() {
-    return _BaseButtonState();
-  }
-
-}
-class _BaseButtonState extends State<BaseButton> {
-  final Status status=Status.active;
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: widget.status == Status.inavctive ? 0.4 : 1.0,
+      opacity: status == Status.inactive
+          ? 0.4
+          : 1.0,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
@@ -38,19 +33,14 @@ class _BaseButtonState extends State<BaseButton> {
           backgroundColor:
               MaterialStateProperty.all(ProjectColors.backgroundYellow),
         ),
-        onPressed: widget.status == Status.inavctive
-            ? ()=>{}
-            : onTap(widget.onPressed),
+        onPressed: status == Status.inactive
+            ? null
+            : onPressed,
         child: Text(
-          widget.label,
+          label,
           style: AppTypography.normal16,
         ),
       ),
     );
-  }
-  onTap(void Function() onPressed){
-    widget.status=Status.loading;
-    onPressed;
-    widget.status = Status.active;
   }
 }

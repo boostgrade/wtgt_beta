@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 
 import 'main_screen_store.dart';
 
@@ -9,12 +10,11 @@ import 'main_screen_store.dart';
 class MainScreen extends StatelessWidget {
 
   final MainScreenStore store;
-
   static const double _labelSize = 12.0;
   // TODO(artem-zaitsev): здесь будут храниться экраны, когда появятся
   final List<Widget> _screens = [
-    const Center(
-      child: Text('Screen 1'),
+    Center(
+      child: BaseButton(onPressed: ()=>print(Status.active), status: Status.active, label: 'Test',),
     ),
     const Center(
       child: Text('Screen 1'),
