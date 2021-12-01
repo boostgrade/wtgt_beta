@@ -36,17 +36,22 @@ class BaseButton extends StatelessWidget {
         onPressed: status == Status.inactive
             ? null
             : onPressed,
-        child: status == Status.loading
-            ? const SizedBox(
+        child: Container(
+          padding: status == Status.loading
+              ? const EdgeInsets.symmetric(vertical: 8)
+              : const EdgeInsets.only(top: 15,bottom: 10),
+          child: status == Status.loading
+              ? const SizedBox(
             width: 30,
             height: 30,
             child: CircularProgressIndicator(
-                color: ProjectColors.buttonStrokeBlue,
+              color: ProjectColors.buttonStrokeBlue,
             ),
-        )
-            :Text(
-          label,
-          style: AppTypography.normal16,
+          )
+              :Text(
+            label,
+            style: AppTypography.normal16,
+          ),
         ),
       ),
     );
