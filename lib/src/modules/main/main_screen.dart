@@ -8,7 +8,6 @@ import 'main_screen_store.dart';
 
 /// Глвный экран с табами
 class MainScreen extends StatelessWidget {
-
   final MainScreenStore store;
   static const double _labelSize = 12.0;
   // TODO(artem-zaitsev): здесь будут храниться экраны, когда появятся
@@ -18,9 +17,27 @@ class MainScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BaseButton(onPressed: ()=>print(Status.active), status: Status.active, label: 'Test',),
-          BaseButton(onPressed: ()=>print(Status.inactive), status: Status.inactive, label: 'Test',),
-          BaseButton(onPressed: ()=>print(Status.loading), status: Status.loading, label: 'Test',),
+          BaseButton(
+            onPressed: () {
+              debugPrint(Status.active.toString());
+            },
+            status: Status.active,
+            label: 'Test',
+          ),
+          BaseButton(
+            onPressed: () {
+              debugPrint(Status.inactive.toString());
+            },
+            status: Status.inactive,
+            label: 'Test',
+          ),
+          BaseButton(
+            onPressed: () {
+              debugPrint(Status.loading.toString());
+            },
+            status: Status.loading,
+            label: 'Test',
+          ),
         ],
       ),
     ),
@@ -33,8 +50,6 @@ class MainScreen extends StatelessWidget {
   ];
 
   MainScreen({Key? key, required this.store}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +65,9 @@ class MainScreen extends StatelessWidget {
             // TODO: поменять иконки из дизайна, когда они появятся
             BottomNavigationBarItem(
               icon: const Icon(Icons.search),
-              activeIcon: const Icon(Icons.search,),
+              activeIcon: const Icon(
+                Icons.search,
+              ),
               label: AppLocalizations.of(context)!.placesTabName,
             ),
             BottomNavigationBarItem(
