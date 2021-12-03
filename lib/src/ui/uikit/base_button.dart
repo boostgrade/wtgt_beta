@@ -32,7 +32,7 @@ class BaseButton extends StatelessWidget {
         backgroundColor:
         MaterialStateProperty.all(ProjectColors.backgroundYellow),
       ),
-      onPressed: status == Status.inactive ? null : onPressed,
+      onPressed: status == Status.inactive ? null : ()=>onPressed,
       child: Container(
         padding: status == Status.loading
             ? const EdgeInsets.symmetric(vertical: 8)
