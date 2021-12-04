@@ -56,6 +56,7 @@ class UnauthorizedException implements Exception {
   UnauthorizedException(this._errorCode, this._errorMessage);
 
   String errorMessage() {
+    /// Необходим новый токен
     return _errorMessage;
   }
 }
