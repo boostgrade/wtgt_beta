@@ -4,13 +4,13 @@ class AppTypography{
 
   static const String fontFamily='Montserrat';
 
-  TextStyle normal(double fontSize)=>TextStyle(
+  static TextStyle normal(double fontSize)=>TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w400,
     fontSize: fontSize,
     color: const Color(0x00000000),);
 
-  TextStyle semiBold(double fontSize,FontWeight fontWeight)=>TextStyle(
+  static TextStyle semiBold(double fontSize,FontWeight fontWeight)=>TextStyle(
       fontFamily: fontFamily,
       fontWeight: fontWeight,
       fontSize: fontSize,
