@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
 import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 
-enum Status { active, inactive, loading } //состаяния кнопки
-//Базовый компонент кнопки
+enum Status {
+  active,
+  inactive,
+  loading,
+}
+///состояния кнопки Status: active - кнопка активна, inactive -  кнопка неактивна,loading - состояние загрузки
+
+
+///Базовый компонент кнопки BaseButton
+///В конструктор передается label - надпись внутри кнопки,
+///onPressed - функиця-обработчик нажатия
+///status - состояние кнопки
+///Ссылка на виджет Figma: https://www.figma.com/file/8wRDN0M82bIuRZS6Uomv8X/Where-to-go-today%3F?node-id=254%3A1106
+
 class BaseButton extends StatelessWidget {
   final String label;
   final void Function() onPressed;
@@ -32,7 +44,7 @@ class BaseButton extends StatelessWidget {
         backgroundColor:
         MaterialStateProperty.all(ProjectColors.backgroundYellow),
       ),
-      onPressed: status == Status.inactive ? null : ()=>onPressed,
+      onPressed: status == Status.inactive ? null : onPressed,
       child: Container(
         padding: status == Status.loading
             ? const EdgeInsets.symmetric(vertical: 8)
