@@ -5,11 +5,8 @@ import 'package:where_to_go_today/src/services/exceptions/server/server_error_ma
 class ErrorInterceptor extends Interceptor {
   @override
   onError(DioError err, ErrorInterceptorHandler handler) {
-    ServerErrorMapper.fromStatusCode(
-      err.response?.statusCode,
-      err.response?.statusMessage,
+    throw ServerErrorMapper.fromStatusCode(
+      err,
     );
-
-    handler.reject(err);
   }
 }

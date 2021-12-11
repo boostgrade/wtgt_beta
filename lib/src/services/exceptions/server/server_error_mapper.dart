@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import 'server_exceptions.dart';
 
 /// Сущность, которая преобразует ошибки сервера в ошибки приложенния
@@ -9,24 +11,26 @@ class ServerErrorMapper {
   static const int _unauthorized = 401;
   static const int _badRequest = 400;
 
-  static Exception fromStatusCode(int? statusCode, String? statusDescription) {
+  static Exception fromStatusCode(DioError err) {
     /// Для обработки остальных серверных ошибок
     /// нужно написать дополнительные блоки в условном выражении,
     /// предварительно создав классы исключений.
-    if (statusCode == _notFound) {
-      return NotFoundException(statusCode!, statusDescription!);
+    int? errorStatusCode = err.response?.statusCode;
+    String? errorData = err.response?.data.toString();
+    if (errorStatusCode == _notFound) {
+      return NotFoundException(errorStatusCode!, errorData!);
     }
 
-    if (statusCode == _unauthorized) {
+    if (errorStatusCode == _unauthorized) {
       // Необходимо перезапросить токен
-      return UnauthorizedException(statusCode!, statusDescription!);
+      return UnauthorizedException(errorStatusCode!, errorData!);
     }
 
-    if (statusCode == _badRequest) {
-      return BadRequestException(statusCode!, statusDescription!);
+    if (errorStatusCode == _badRequest) {
+      return BadRequestException(errorStatusCode!, errorData!);
     }
 
     /// Возвращается по-умолчанию для остальных ошибок
-    return ServerErrorException(statusCode!, statusDescription!);
+    return ServerErrorException(errorStatusCode!, errorData!);
   }
 }
