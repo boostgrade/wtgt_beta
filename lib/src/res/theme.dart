@@ -20,7 +20,7 @@ class AppTheme {
           button: AppTypography.normal(16),
         ),
         //accentColor как добавить?
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: Color(0xFFEBCE0C),
           primaryVariant: Color(0xFFC7B800),
           secondary: Color(0xFF184E9E),
