@@ -24,19 +24,19 @@ class AppTheme {
           primary: Color(0xFFEBCE0C),
           primaryVariant: Color(0xFFC7B800),
           secondary: Color(0xFF184E9E),
-          background: Color(0xFFFFFF),
-          surface: Color(0xFFFFFF),
+          background: Color(0xFFFFFFFF),
+          surface: Color(0xFFFFFFFF),
           onPrimary: Color(0xFF000000),
           onSecondary: Color(0xFFFFFFFF),
           onSurface: Color(0xFF000000),
           onBackground: Color(0xFF000000),
           onError: Color(0xFFB00020),
         ),
-        cardTheme: CardTheme(
+        cardTheme: const CardTheme(
           color: Color(0xFFA9D899),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           constraints: BoxConstraints(
             minWidth: 327,
             minHeight: 52,
