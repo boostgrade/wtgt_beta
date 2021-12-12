@@ -26,7 +26,7 @@ class ProgressIconWidget extends StatelessWidget {
             value: progress,
             strokeWidth: 1.0,
             color: ProjectColors.activeColor,
-            backgroundColor: ProjectColors.divider,
+            backgroundColor: ProjectColors.dividerColor ,
           ),
           progress < 1
               ? Text(

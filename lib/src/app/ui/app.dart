@@ -8,7 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:where_to_go_today/src/ui/base/view_model.dart';
 import 'package:where_to_go_today/src/ui/base/view_model_disposer_mixin.dart';
-import 'package:where_to_go_today/src/res/theme.dart';
+import 'package:where_to_go_today/src/ui/res/theme/theme.dart';
 
 /// The Widget that configures your application.
 class App extends StatefulWidget {
