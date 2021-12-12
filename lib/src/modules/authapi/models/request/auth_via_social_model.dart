@@ -1,13 +1,15 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_via_social_model.g.dart';
-
+///Модель данных здля запроса на авторизацию через соцсети
 @JsonSerializable()
-class AuthViaSocial{
+class AuthViaSocialRequest{
+
   String token;
 
-  AuthViaSocial({required this.token});
+  AuthViaSocialRequest({required this.token,});
 
-  factory AuthViaSocial.fromJson(Map<String,dynamic> json) => _$AuthViaSocialFromJson(json);
+  factory AuthViaSocialRequest.fromJson(Map<String,dynamic> json) => _$AuthViaSocialRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthViaSocialRequestToJson(this);
 }

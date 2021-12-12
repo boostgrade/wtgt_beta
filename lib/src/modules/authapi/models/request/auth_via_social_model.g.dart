@@ -6,12 +6,14 @@ part of 'auth_via_social_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthViaSocial _$AuthViaSocialFromJson(Map<String, dynamic> json) =>
-    AuthViaSocial(
+AuthViaSocialRequest _$AuthViaSocialRequestFromJson(
+        Map<String, dynamic> json) =>
+    AuthViaSocialRequest(
       token: json['token'] as String,
     );
 
-Map<String, dynamic> _$AuthViaSocialToJson(AuthViaSocial instance) =>
+Map<String, dynamic> _$AuthViaSocialRequestToJson(
+        AuthViaSocialRequest instance) =>
     <String, dynamic>{
       'token': instance.token,
     };
