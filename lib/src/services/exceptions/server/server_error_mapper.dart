@@ -16,7 +16,7 @@ class ServerErrorMapper {
     /// нужно написать дополнительные блоки в условном выражении,
     /// предварительно создав классы исключений.
     int? errorStatusCode = err.response?.statusCode;
-    String? errorData = err.response?.statusMessage;
+    Map<String, dynamic>? errorData = err.response?.data;
     if (errorStatusCode == _notFound) {
       return NotFoundException(errorStatusCode!, errorData!);
     }
