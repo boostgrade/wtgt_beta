@@ -20,7 +20,7 @@ class User{
     required this.phone,
   required this.birthDate,
   required this.token,
-  required this.refreshToken
+  required this.refreshToken,
   });
 
   factory User.fromJson(Map<String,dynamic> json) => _$UserFromJson(json);
