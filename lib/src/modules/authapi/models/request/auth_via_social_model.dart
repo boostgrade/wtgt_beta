@@ -4,6 +4,7 @@ part 'auth_via_social_model.g.dart';
 ///Модель данных здля запроса на авторизацию через соцсети
 @JsonSerializable()
 class AuthViaSocialRequest{
+
   String token;
 
   AuthViaSocialRequest({required this.token,});

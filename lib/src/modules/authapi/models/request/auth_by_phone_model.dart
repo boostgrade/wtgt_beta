@@ -4,6 +4,7 @@ part 'auth_by_phone_model.g.dart';
 ///Модель данных здля запроса на авторизацию через телефон
 @JsonSerializable()
 class AuthByPhoneRequest{
+
   String? phone;
   String? firebaseToken;
 
