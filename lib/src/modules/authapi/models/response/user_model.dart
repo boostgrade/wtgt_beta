@@ -4,6 +4,7 @@ part 'user_model.g.dart';
 /// Модель пользователя, прилтеающая после запроса авторизации
 @JsonSerializable()
 class UserResponse {
+
   int id;
   String name;
   String lastName;

@@ -5,6 +5,8 @@ import 'package:where_to_go_today/src/modules/authapi/models/request/auth_via_so
 import 'package:where_to_go_today/src/modules/authapi/models/response/user_model.dart';
 
 part 'auth_api.g.dart';
+
+
 @RestApi(baseUrl: 'https://stoplight.io/mocks/softech/wtgt/75539')
 abstract class Auth{
   static const String requestBody='application/json';

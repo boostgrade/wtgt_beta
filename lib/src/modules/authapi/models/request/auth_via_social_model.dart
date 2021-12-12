@@ -6,8 +6,9 @@ part 'auth_via_social_model.g.dart';
 class AuthViaSocialRequest{
   String token;
 
-  AuthViaSocialRequest({required this.token});
+  AuthViaSocialRequest({required this.token,});
 
   factory AuthViaSocialRequest.fromJson(Map<String,dynamic> json) => _$AuthViaSocialRequestFromJson(json);
+
   Map<String, dynamic> toJson() => _$AuthViaSocialRequestToJson(this);
 }
