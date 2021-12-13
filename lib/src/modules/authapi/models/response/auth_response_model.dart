@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'user_model.g.dart';
+part 'auth_response_model.g.dart';
 
 /// Модель пользователя, прилтеающая после запроса авторизации
 @JsonSerializable()
-class UserResponse {
+class AuthResponse {
 
   int id;
   String name;
@@ -13,7 +13,7 @@ class UserResponse {
   String token;
   String refreshToken;
 
-  UserResponse({
+  AuthResponse({
     required this.id,
     required this.name,
     required this.lastName,
@@ -22,7 +22,7 @@ class UserResponse {
     required this.token,
     required this.refreshToken,});
 
-  factory UserResponse.fromJson(Map<String, dynamic> json) => _$UserResponseFromJson(json);
+  factory AuthResponse.fromJson(Map<String, dynamic> json) => _$AuthResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AuthResponseToJson(this);
 }

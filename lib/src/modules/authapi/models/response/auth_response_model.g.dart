@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model.dart';
+part of 'auth_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
+UserResponse _$AuthResponseFromJson(Map<String, dynamic> json) => UserResponse(
       id: json['id'] as int,
       name: json['name'] as String,
       lastName: json['lastName'] as String,
@@ -16,7 +16,7 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       refreshToken: json['refreshToken'] as String,
     );
 
-Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
+Map<String, dynamic> _$AuthResponseToJson(UserResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
