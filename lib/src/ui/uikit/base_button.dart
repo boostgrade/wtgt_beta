@@ -35,14 +35,14 @@ class BaseButton extends StatelessWidget {
         shape: MaterialStateProperty.all(
           const RoundedRectangleBorder(
             side: BorderSide(
-              color: ProjectColors.buttonStrokeBlue,
+              color: ProjectColors.buttonStrokeColor,
               width: 1.0,
             ),
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
         ),
         backgroundColor:
-        MaterialStateProperty.all(ProjectColors.backgroundYellow),
+        MaterialStateProperty.all(ProjectColors.primary),
       ),
       onPressed: status == Status.inactive ? null : onPressed,
       child: Container(
@@ -54,7 +54,7 @@ class BaseButton extends StatelessWidget {
           width: 30,
           height: 30,
           child: CircularProgressIndicator(
-            color: ProjectColors.buttonStrokeBlue,
+            color: ProjectColors.buttonStrokeColor,
           ),
         )
             : Opacity(
