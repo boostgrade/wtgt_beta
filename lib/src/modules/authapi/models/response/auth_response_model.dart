@@ -5,13 +5,13 @@ part 'auth_response_model.g.dart';
 @JsonSerializable()
 class AuthResponse {
 
-  int id;
-  String name;
-  String lastName;
-  String phone;
-  DateTime birthDate;
-  String token;
-  String refreshToken;
+  final int id;
+  final String name;
+  final String lastName;
+  final String phone;
+  final DateTime birthDate;
+  final String token;
+  final String refreshToken;
 
   AuthResponse({
     required this.id,

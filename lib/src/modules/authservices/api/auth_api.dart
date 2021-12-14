@@ -2,14 +2,15 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_by_phone_model.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_via_social_model.dart';
+import 'package:where_to_go_today/src/modules/authapi/models/request/register.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/response/auth_response_model.dart';
 
 part 'auth_api.g.dart';
 
-@RestApi(baseUrl: 'https://stoplight.io/mocks/softech/wtgt/75539')
-abstract class Auth{
-  static const String requestBody='application/json';
-  factory Auth(Dio dio, {String baseUrl}) = _Auth;
+@RestApi()
+abstract class AuthApi{
+
+  factory AuthApi(Dio dio, {String baseUrl}) = _AuthApi;
 
   @POST('/login/phone')
   Future<AuthResponse> loginByPhone(@Body() AuthByPhoneRequest data,);
@@ -25,4 +26,11 @@ abstract class Auth{
 
   @POST('/login/google')
   Future<AuthResponse> loginViaGoogle(@Body() AuthViaSocialRequest data,);
+
+  @POST('/register')
+  Future<RegisterRequest> register(@Body() RegisterRequest data,);
+
+
+  @GET('/logout')
+  Future<void> logout();
 }

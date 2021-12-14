@@ -5,8 +5,8 @@ part 'auth_by_phone_model.g.dart';
 @JsonSerializable()
 class AuthByPhoneRequest{
 
-  String? phone;
-  String? firebaseToken;
+  final String? phone;
+  final String? firebaseToken;
 
   AuthByPhoneRequest({required this.phone, required this.firebaseToken,});
 

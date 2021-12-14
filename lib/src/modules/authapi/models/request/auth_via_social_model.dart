@@ -5,7 +5,7 @@ part 'auth_via_social_model.g.dart';
 @JsonSerializable()
 class AuthViaSocialRequest{
 
-  String token;
+  final String token;
 
   AuthViaSocialRequest({required this.token,});
 

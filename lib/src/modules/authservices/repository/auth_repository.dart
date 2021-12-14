@@ -1,4 +1,3 @@
-
 import 'package:where_to_go_today/src/domain/user.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_by_phone_model.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_via_social_model.dart';
@@ -6,8 +5,7 @@ import 'package:where_to_go_today/src/modules/authapi/models/response/auth_respo
 import 'package:where_to_go_today/src/modules/authservices/api/auth_api.dart';
 
 class AuthRepository{
-
-  Auth api;
+  final AuthApi api;
 
   AuthRepository({required this.api});
 
@@ -21,7 +19,7 @@ class AuthRepository{
       lastName: response.lastName,
       phone: response.phone,
       email: '',
-      birthDate: response.birthDate.toString(),);
+      birthDate: response.birthDate,);
   }
   Future<User> loginViaMeta(AuthViaSocialRequest data) async {
     AuthResponse response;
@@ -33,7 +31,7 @@ class AuthRepository{
       lastName: response.lastName,
       phone: response.phone,
       email: '',
-      birthDate: response.birthDate.toString(),);
+      birthDate: response.birthDate,);
   }
   Future<User> loginViaApple(AuthViaSocialRequest data) async {
     AuthResponse response;
@@ -45,7 +43,7 @@ class AuthRepository{
       lastName: response.lastName,
       phone: response.phone,
       email: '',
-      birthDate: response.birthDate.toString(),);
+      birthDate: response.birthDate,);
   }
   Future<User> loginViaVk(AuthViaSocialRequest data) async {
     AuthResponse response;
@@ -57,7 +55,7 @@ class AuthRepository{
       lastName: response.lastName,
       phone: response.phone,
       email: '',
-      birthDate: response.birthDate.toString(),);
+      birthDate: response.birthDate,);
   }
   Future<User> loginViaGoogle(AuthViaSocialRequest data) async {
     AuthResponse response;
@@ -69,7 +67,7 @@ class AuthRepository{
       lastName: response.lastName,
       phone: response.phone,
       email: '',
-      birthDate: response.birthDate.toString(),);
+      birthDate: response.birthDate,);
   }
 
 }
