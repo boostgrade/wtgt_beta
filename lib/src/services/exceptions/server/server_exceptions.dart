@@ -23,16 +23,13 @@ class ServerErrorException implements Exception {
 
 class NotFoundException implements Exception {
   final int _errorCode;
-  final Map<String, dynamic> _errorData;
 
-  NotFoundException(this._errorCode, this._errorData);
+  NotFoundException(this._errorCode);
 
-  String errorMessage() {
+  void errorMessage() {
     print(
-      '$_errorCode: $_errorData',
+      '$_errorCode',
     );
-
-    return _errorData.toString();
   }
 }
 
@@ -53,12 +50,11 @@ class BadRequestException implements Exception {
 
 class UnauthorizedException implements Exception {
   final int _errorCode;
-  final Map<String, dynamic> _errorData;
 
-  UnauthorizedException(this._errorCode, this._errorData);
+  UnauthorizedException(this._errorCode);
 
-  String errorMessage() {
+  void errorMessage() {
     /// Необходим новый токен
-    return _errorData.toString();
+    print('Необходим новый токен');
   }
 }

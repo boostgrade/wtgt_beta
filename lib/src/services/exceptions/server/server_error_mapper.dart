@@ -18,12 +18,12 @@ class ServerErrorMapper {
     int? errorStatusCode = err.response?.statusCode;
     Map<String, dynamic>? errorData = err.response?.data;
     if (errorStatusCode == _notFound) {
-      return NotFoundException(errorStatusCode!, errorData!);
+      return NotFoundException(errorStatusCode!);
     }
 
     if (errorStatusCode == _unauthorized) {
       // Необходимо перезапросить токен
-      return UnauthorizedException(errorStatusCode!, errorData!);
+      return UnauthorizedException(errorStatusCode!);
     }
 
     if (errorStatusCode == _badRequest) {
