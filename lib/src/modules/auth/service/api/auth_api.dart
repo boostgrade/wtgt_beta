@@ -1,9 +1,9 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-import 'package:where_to_go_today/src/modules/authapi/models/request/auth_by_phone_model.dart';
-import 'package:where_to_go_today/src/modules/authapi/models/request/auth_via_social_model.dart';
-import 'package:where_to_go_today/src/modules/authapi/models/request/register.dart';
-import 'package:where_to_go_today/src/modules/authapi/models/response/auth_response_model.dart';
+import 'package:where_to_go_today/src/modules/auth/models/request/auth_by_phone_model.dart';
+import 'package:where_to_go_today/src/modules/auth/models/request/auth_via_social_model.dart';
+import 'package:where_to_go_today/src/modules/auth/models/request/register.dart';
+import 'package:where_to_go_today/src/modules/auth/models/response/auth_response_model.dart';
 
 part 'auth_api.g.dart';
 
