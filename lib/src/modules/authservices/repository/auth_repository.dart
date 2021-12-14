@@ -1,10 +1,11 @@
 import 'package:where_to_go_today/src/domain/user.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_by_phone_model.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/request/auth_via_social_model.dart';
+import 'package:where_to_go_today/src/modules/authapi/models/request/register.dart';
 import 'package:where_to_go_today/src/modules/authapi/models/response/auth_response_model.dart';
 import 'package:where_to_go_today/src/modules/authservices/api/auth_api.dart';
 
-class AuthRepository{
+class AuthRepository {
   final AuthApi api;
 
   AuthRepository({required this.api});
@@ -21,6 +22,7 @@ class AuthRepository{
       email: '',
       birthDate: response.birthDate,);
   }
+
   Future<User> loginViaMeta(AuthViaSocialRequest data) async {
     AuthResponse response;
     response = await api.loginViaMeta(data);
@@ -33,6 +35,7 @@ class AuthRepository{
       email: '',
       birthDate: response.birthDate,);
   }
+
   Future<User> loginViaApple(AuthViaSocialRequest data) async {
     AuthResponse response;
     response = await api.loginViaApple(data);
@@ -45,6 +48,7 @@ class AuthRepository{
       email: '',
       birthDate: response.birthDate,);
   }
+
   Future<User> loginViaVk(AuthViaSocialRequest data) async {
     AuthResponse response;
     response = await api.loginViaVk(data);
@@ -57,6 +61,7 @@ class AuthRepository{
       email: '',
       birthDate: response.birthDate,);
   }
+
   Future<User> loginViaGoogle(AuthViaSocialRequest data) async {
     AuthResponse response;
     response = await api.loginViaGoogle(data);
@@ -70,4 +75,11 @@ class AuthRepository{
       birthDate: response.birthDate,);
   }
 
+  Future<void> logout() async {
+    await api.logout();
+  }
+
+  Future<void> register(RegisterRequest data) async {
+    await api.register(data);
+  }
 }
