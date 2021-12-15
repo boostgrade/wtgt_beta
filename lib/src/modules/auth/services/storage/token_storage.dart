@@ -10,6 +10,7 @@ class AuthTokenStorage {
   /// Метод создающий хранилище
   Future initStorage() async {
     var _box = await Hive.openBox<dynamic>(boxName);
+
     return _box;
   }
 
