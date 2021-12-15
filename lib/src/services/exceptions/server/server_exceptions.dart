@@ -8,16 +8,15 @@ import 'package:where_to_go_today/src/services/exceptions/server/parse_error.dar
 /// Серверная ошибка по-умолчанию
 class ServerErrorException implements Exception {
   final int _errorCode;
-  final Map<String, dynamic> _errorData;
 
-  ServerErrorException(this._errorCode, this._errorData);
+  ServerErrorException(this._errorCode);
 
   String errorMessage() {
     print(
-      '$_errorCode: $_errorData',
+      '$_errorCode',
     );
 
-    return _errorData.toString();
+    return _errorCode.toString();
   }
 }
 

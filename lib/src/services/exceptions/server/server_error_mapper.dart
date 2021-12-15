@@ -16,7 +16,7 @@ class ServerErrorMapper {
     /// нужно написать дополнительные блоки в условном выражении,
     /// предварительно создав классы исключений.
     int? errorStatusCode = err.response?.statusCode;
-    Map<String, dynamic>? errorData = err.response?.data;
+
     if (errorStatusCode == _notFound) {
       return NotFoundException(errorStatusCode!);
     }
@@ -27,10 +27,12 @@ class ServerErrorMapper {
     }
 
     if (errorStatusCode == _badRequest) {
+      Map<String, dynamic>? errorData = err.response?.data;
+
       return BadRequestException(errorStatusCode!, errorData!);
     }
 
     /// Возвращается по-умолчанию для остальных ошибок
-    return ServerErrorException(errorStatusCode!, errorData!);
+    return ServerErrorException(errorStatusCode!);
   }
 }
