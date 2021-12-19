@@ -8,28 +8,38 @@ import 'package:where_to_go_today/src/modules/auth/models/response/auth_response
 part 'auth_api.g.dart';
 
 @RestApi()
-abstract class AuthApi{
-
+abstract class AuthApi {///запросы на авторизацию с применением retrofit
   factory AuthApi(Dio dio, {String baseUrl}) = _AuthApi;
 
   @POST('/login/phone')
-  Future<AuthResponse> loginByPhone(@Body() AuthByPhoneRequest data,);
+  Future<AuthResponse> loginByPhone(
+    @Body() AuthByPhoneRequest data,
+  );
 
   @POST('/login/meta')
-  Future<AuthResponse> loginViaMeta(@Body() AuthViaSocialRequest data,);
+  Future<AuthResponse> loginViaMeta(
+    @Body() AuthViaSocialRequest data,
+  );
 
   @POST('/login/apple')
-  Future<AuthResponse> loginViaApple(@Body() AuthViaSocialRequest data,);
+  Future<AuthResponse> loginViaApple(
+    @Body() AuthViaSocialRequest data,
+  );
 
   @POST('/login/vk')
-  Future<AuthResponse> loginViaVk(@Body() AuthViaSocialRequest data,);
+  Future<AuthResponse> loginViaVk(
+    @Body() AuthViaSocialRequest data,
+  );
 
   @POST('/login/google')
-  Future<AuthResponse> loginViaGoogle(@Body() AuthViaSocialRequest data,);
+  Future<AuthResponse> loginViaGoogle(
+    @Body() AuthViaSocialRequest data,
+  );
 
   @POST('/register')
-  Future<RegisterRequest> register(@Body() RegisterRequest data,);
-
+  Future<RegisterRequest> register(
+    @Body() RegisterRequest data,
+  );
 
   @GET('/logout')
   Future<void> logout();
