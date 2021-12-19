@@ -8,6 +8,9 @@ class AuthTokenStorage {
   static const String boxName = 'tokenStorage';
   static const String _boxKey = 'token';
 
+  /// Реализация через SecureStorage
+  final tokenStorage = new FlutterSecureStorage();
+
   /// Метод создающий хранилище
   Future<Box<String>> initStorage() async {
     var _box = await Hive.openBox<String>(boxName);
@@ -29,9 +32,6 @@ class AuthTokenStorage {
 
     return token;
   }
-
-  /// Реализация через SecureStorage
-  final tokenStorage = new FlutterSecureStorage();
 
   /// Метод позволяющий сохранить токен в защищенное хранилище
   void secureSave(String token) async {
