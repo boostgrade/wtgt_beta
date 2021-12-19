@@ -7,22 +7,12 @@ part of 'auth_response_model.dart';
 // **************************************************************************
 
 AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      lastName: json['lastName'] as String,
-      phone: json['phone'] as String,
-      birthDate: DateTime.parse(json['birthDate'] as String),
-      token: json['token'] as String,
-      refreshToken: json['refreshToken'] as String,
+      user: UserResponse.fromJson(json['user'] as Map<String, dynamic>),
+      token: TokenResponse.fromJson(json['token'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'lastName': instance.lastName,
-      'phone': instance.phone,
-      'birthDate': instance.birthDate.toIso8601String(),
+      'user': instance.user,
       'token': instance.token,
-      'refreshToken': instance.refreshToken,
     };
