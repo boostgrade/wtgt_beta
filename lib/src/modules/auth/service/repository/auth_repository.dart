@@ -8,7 +8,7 @@ import 'package:where_to_go_today/src/modules/auth/service/api/auth_api.dart';
 ///Репозиторий авторизации, скрывающий методы из AuthApi
 class AuthRepository {  final AuthApi api;
 
-  AuthRepository({required this.api});
+  AuthRepository({required this.api,});
 
   Future<User> loginByPhone(AuthByPhoneRequest data) async {
     final AuthResponse response = await api.loginByPhone(data);
@@ -54,7 +54,7 @@ class AuthRepository {  final AuthApi api;
         lastName:response.user.lastName,
         email:'',
         birthDate: response.user.birthDate,
-        phone: response.user.phone
+        phone: response.user.phone,
     );
   }
 }
