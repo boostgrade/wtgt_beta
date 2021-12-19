@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Класс необходим для сохранения токена авторизации
 class AuthTokenStorage {
@@ -27,5 +28,20 @@ class AuthTokenStorage {
     var token = _box.get(_boxKey);
 
     return token;
+  }
+
+  /// Реализация через SecureStorage
+  final tokenStorage = new FlutterSecureStorage();
+
+  /// Метод позволяющий сохранить токен в защищенное хранилище
+  void secureSave(String token) async {
+    await tokenStorage.write(key: boxName, value: token);
+  }
+
+  /// Метод позволяющий читать токен из защищенного хранилища
+  Future<String?> readSecureToken() async {
+    String? value = await tokenStorage.read(key: boxName);
+
+    return value;
   }
 }
