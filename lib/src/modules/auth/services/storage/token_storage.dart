@@ -5,11 +5,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 /// Класс необходим для сохранения токена авторизации
 class AuthTokenStorage {
   static const String boxName = 'tokenStorage';
-  static const String boxKey = 'token';
+  static const String _boxKey = 'token';
 
   /// Метод создающий хранилище
-  Future initStorage() async {
-    var _box = await Hive.openBox<dynamic>(boxName);
+  Future<Box<String>> initStorage() async {
+    var _box = await Hive.openBox<String>(boxName);
 
     return _box;
   }
@@ -17,21 +17,14 @@ class AuthTokenStorage {
   /// Метод помещающий данные в хранилище
   void saveToken(String token) async {
     var _box = await initStorage();
-    await _box.put(boxKey, token);
-    _box.close();
-  }
-
-  /// Метод добавляющий данные в хранилище
-  void addToStorage(dynamic boxData) async {
-    var _box = await initStorage();
-    await _box.add(boxData);
+    await _box.put(_boxKey, token);
     _box.close();
   }
 
   /// Метод с помощью которого можно получить данные(токен) из хранилища
-  Future getToken(dynamic boxData) async {
+  Future<String?> getToken() async {
     var _box = await initStorage();
-    var token = _box.get(boxData);
+    var token = _box.get(_boxKey);
 
     return token;
   }
