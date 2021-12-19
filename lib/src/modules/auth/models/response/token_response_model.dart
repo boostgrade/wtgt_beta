@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'token_response_model.g.dart';
-
+///Модель токена,возврщаемого из response
 @JsonSerializable()
-class TokenResponse {///Модель токена,возврщаемого из response
+class TokenResponse {
   String token;
   String refreshToken;
 

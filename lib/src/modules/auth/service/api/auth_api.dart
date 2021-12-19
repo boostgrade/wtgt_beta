@@ -6,9 +6,9 @@ import 'package:where_to_go_today/src/modules/auth/models/request/register.dart'
 import 'package:where_to_go_today/src/modules/auth/models/response/auth_response_model.dart';
 
 part 'auth_api.g.dart';
-
+///запросы на авторизацию с применением retrofit
 @RestApi()
-abstract class AuthApi {///запросы на авторизацию с применением retrofit
+abstract class AuthApi {
   factory AuthApi(Dio dio, {String baseUrl}) = _AuthApi;
 
   @POST('/login/phone')

@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'user_response_model.g.dart';
+///Модель пользователя, возвращаемого из response
 @JsonSerializable()
-class UserResponse {///Модель пользователя, возвращаемого из response
+class UserResponse {
   final int id;
   final String name;
   final String lastName;
