@@ -7,7 +7,7 @@ class UserResponse {
   final String name;
   final String lastName;
   final String phone;
-  final DateTime birthDate;
+  final String birthDate;
 
   UserResponse({
     required this.id,
