@@ -45,7 +45,7 @@ Future<void> logout() async {
   await api.logout();
 }
 
-Future<void> register(RegisterResponse data) async {
+Future<void> register(RegisterRequest data) async {
   await api.register(data);
 }
 

@@ -37,8 +37,8 @@ abstract class AuthApi {
   );
 
   @POST('/register')
-  Future<RegisterResponse> register(
-    @Body() RegisterResponse data,
+  Future<RegisterRequest> register(
+    @Body() RegisterRequest data,
   );
 
   @GET('/logout')
