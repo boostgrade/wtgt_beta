@@ -53,7 +53,7 @@ class AuthRepository {  final AuthApi api;
         name:response.user.name,
         lastName:response.user.lastName,
         email:'',
-        birthDate: response.user.birthDate,
+        birthDate: DateTime.parse(response.user.birthDate),
         phone: response.user.phone,
     );
   }
