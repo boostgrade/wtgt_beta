@@ -44,7 +44,7 @@ class AuthRepository {  final AuthApi api;
     await api.logout();
   }
 
-  Future<void> register(RegisterRequest data) async {
+  Future<void> register(RegisterResponse data) async {
     await api.register(data);
   }
   User convertResponseToDomainModel(AuthResponse response){
