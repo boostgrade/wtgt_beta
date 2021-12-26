@@ -37,13 +37,14 @@ class BadRequestException implements Exception {
   final Map<String, dynamic> _errorData;
 
   BadRequestException(this._errorCode, this._errorData);
-  String errorMessage() {
+
+  @override
+  String toString() {
     ErrorBody errorBody = ErrorBody.fromMap(_errorData);
     int dataErrorCode = errorBody.errorCode!;
     String dataErrorMessage = errorBody.errorMessage!;
-    print('$dataErrorCode: $dataErrorMessage');
 
-    return dataErrorMessage;
+    return '$dataErrorCode: $dataErrorMessage';
   }
 }
 

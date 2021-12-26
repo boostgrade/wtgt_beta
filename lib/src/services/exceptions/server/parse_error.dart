@@ -1,11 +1,12 @@
 class ErrorBody {
-  int? errorCode;
-  String? errorMessage;
+  final int? errorCode;
+  final String? errorMessage;
 
   ErrorBody(this.errorCode, this.errorMessage);
 
-  ErrorBody.fromMap(Map<String, dynamic> json) {
-    this.errorCode = json['code'];
-    this.errorMessage = json['message'];
+  factory ErrorBody.fromMap(Map<String, dynamic> json) {
+    return ErrorBody(json['errorCode'], json['errorMessage']);
   }
+
+  ErrorBody._internal(this.errorCode, this.errorMessage);
 }
