@@ -11,48 +11,55 @@ abstract class AppTypography {
     fontFamily: fontFamily,
     fontWeight: FontWeight.w400,
     fontSize: 12.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle light16 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w400,
     fontSize: 16.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle normal16 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w500,
     fontSize: 16.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle normal18 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w500,
     fontSize: 18.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle semiBold12 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w700,
     fontSize: 12.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle semiBold16 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w700,
     fontSize: 16.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
+  );
+
+  static const TextStyle semiBold18 = TextStyle(
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w700,
+    fontSize: 18.0,
+    color: ProjectColors.textPrimaryColor,
   );
 
   static const TextStyle semiBold24 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w600,
     fontSize: 24.0,
-    color: ProjectColors.textColorPrimary,
+    color: ProjectColors.textPrimaryColor,
   );
 }
