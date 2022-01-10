@@ -1,20 +1,40 @@
-/*
-* фронт - Ф
-* блок - Б
-*
-* 1. Инициализация приложения
-* Ф - sync 'init' - событие запуска приложения
-* Б - stream 'success' - если не нужна регистрация, фронт показывает начальный экран
-* Б - stream 'need_auth' - если нужна регистрация, фронт показывает страницу регистрации
-*
-* 2. Страница регистрации - может это не нужно и фронт сам даст нужную страницу?
-* Ф - sync '<тип регистрации>' - phone, fb, vk, google, блок вызывает страницу авторизации в указанном сервисе
-* Б - stream '<страница регистрации>' - страница регистрации по телефону.
-*
-* 3. Регистрация
-* Ф - sync new auth, {
-*   name, second_name, email, birthday, agreement
-* } - блок получает данные и дергает метод записи в БД данных пользователя или другой метод регистрации
-* Б - stream 'success/error' - фронт показывает главную страницу приложения
-*
-* */
+import 'package:bloc/bloc.dart';
+import 'package:where_to_go_today/src/modules/auth/services/events/auth_event.dart';
+import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.dart';
+
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
+
+  AuthBloc() : super(State()) {
+
+    on<SmsAuthEvent>((event, emit) {
+      //делаем что-то
+      //изменяем состояние
+      emit(EmittedState());
+    });
+
+    on<ExternalAuthEvent>((event, emit) {
+      //делаем что-то
+      //изменяем состояние
+      emit(EmittedState());
+    });
+
+    on<PhoneAuthEvent>((event, emit) {
+      //делаем что-то
+      //изменяем состояние
+      emit(EmittedState());
+    });
+
+    on<LogoutEvent>((event, emit) {
+      //делаем что-то
+      //изменяем состояние
+      emit(EmittedState());
+    });
+
+    on<RegistrationEvent>((event, emit) {
+      //делаем что-то
+      //изменяем состояние
+      emit(EmittedState());
+    });
+  }
+}
+
