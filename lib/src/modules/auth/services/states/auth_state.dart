@@ -1,7 +1,7 @@
 abstract class AuthState {}
 
-class State extends AuthState {}
+class LoadingState extends AuthState {}
 
-class EmittedState extends AuthState {}
+class SuccessState extends AuthState {}
 
 class ErrorState extends AuthState {}
