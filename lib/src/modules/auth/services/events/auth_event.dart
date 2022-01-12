@@ -6,8 +6,11 @@ class SmsAuthEvent extends AuthEvent {
   SmsAuthEvent(this.code);
 }
 
+enum SocialTypes { vk, apple, google, fb }
+
 class ExternalAuthEvent extends AuthEvent {
-  final Enum type;
+
+  final SocialTypes type;
 
   ExternalAuthEvent(this.type);
 }

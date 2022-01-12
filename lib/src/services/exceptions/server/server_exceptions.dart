@@ -3,7 +3,7 @@ import 'package:where_to_go_today/src/services/exceptions/server/parse_error.dar
 /// Для преобразования ошибок сервера в ошибки приложенния,
 /// необходимо создать соответсвующие классы,
 /// расширяющие класс [Exception]
-/// с названиями, соответсвующими конкретной ошибке.
+/// с названиями, соответсвующими конкретной ошибки.
 
 /// Серверная ошибка по-умолчанию
 class ServerErrorException implements Exception {
