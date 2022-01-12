@@ -18,7 +18,7 @@ dependencies:
   # Architect
   mobx: ^2.0.0
   flutter_mobx: ^2.0.0
-  bloc: ^8.0.2
+  bloc: ^7.2.0
   flutter_bloc: ^7.3.0
 
   # DI
