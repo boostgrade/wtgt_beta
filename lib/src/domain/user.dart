@@ -5,7 +5,7 @@ class User {
   final String lastName;
   final String phone;
   final String email;
-  final String birthDate;
+  final DateTime birthDate;
   final String photoUrl;
 
   User({
