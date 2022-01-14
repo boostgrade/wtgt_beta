@@ -28,6 +28,14 @@ abstract class AppTypography {
     color: ProjectColors.textPrimaryColor,
   );
 
+  static const TextStyle normal16underlined = TextStyle(
+    fontFamily: fontFamily,
+    decoration: TextDecoration.underline,
+    fontWeight: FontWeight.w500,
+    fontSize: 16.0,
+    color: ProjectColors.textPrimaryColor,
+  );
+
   static const TextStyle normal18 = TextStyle(
     fontFamily: fontFamily,
     fontWeight: FontWeight.w500,
