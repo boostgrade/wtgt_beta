@@ -12,9 +12,9 @@ class ServerErrorException implements Exception {
   ServerErrorException(this._errorCode);
 
   String errorMessage() {
-    // print(
-    //   '$_errorCode',
-    // );
+    print(
+      '$_errorCode',
+    );
 
     return _errorCode.toString();
   }
@@ -26,9 +26,9 @@ class NotFoundException implements Exception {
   NotFoundException(this._errorCode);
 
   void errorMessage() {
-    // print(
-    //   '$_errorCode',
-    // );
+    print(
+      '$_errorCode',
+    );
   }
 }
 
