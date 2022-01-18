@@ -6,13 +6,32 @@ class SmsAuthEvent extends AuthEvent {
   SmsAuthEvent(this.code);
 }
 
-enum SocialTypes { vk, apple, google, fb }
+class MetaAuthEvent extends AuthEvent {
 
-class ExternalAuthEvent extends AuthEvent {
+  final String token;
 
-  final SocialTypes type;
+  MetaAuthEvent(this.token);
+}
 
-  ExternalAuthEvent(this.type);
+class AppleAuthEvent extends AuthEvent {
+
+  final String token;
+
+  AppleAuthEvent(this.token);
+}
+
+class VkAuthEvent extends AuthEvent {
+
+  final String token;
+
+  VkAuthEvent(this.token);
+}
+
+class GoogleAuthEvent extends AuthEvent {
+
+  final String token;
+
+  GoogleAuthEvent(this.token);
 }
 
 class PhoneAuthEvent extends AuthEvent {
@@ -31,4 +50,11 @@ class RegistrationEvent extends AuthEvent {
   final DateTime birthDate;
 
   RegistrationEvent(this.name, this.lastName, this.phone, this.birthDate);
+}
+
+class SendPhoneEvent extends AuthEvent {
+
+  final String phone;
+
+  SendPhoneEvent(this.phone);
 }

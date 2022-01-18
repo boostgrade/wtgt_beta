@@ -5,10 +5,10 @@ part 'register.g.dart';
 @JsonSerializable()
 class RegisterRequest{
 
-  String name;
-  String lastName;
-  String phone;
-  DateTime birthDate;
+  String? name;
+  String? lastName;
+  String? phone;
+  DateTime? birthDate;
 
   RegisterRequest({
     required this.name,
