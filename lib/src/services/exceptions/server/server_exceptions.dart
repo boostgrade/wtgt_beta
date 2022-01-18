@@ -12,9 +12,9 @@ class ServerErrorException implements Exception {
   ServerErrorException(this._errorCode);
 
   String errorMessage() {
-    print(
-      '$_errorCode',
-    );
+    // print(
+    //   '$_errorCode',
+    // );
 
     return _errorCode.toString();
   }
@@ -26,9 +26,9 @@ class NotFoundException implements Exception {
   NotFoundException(this._errorCode);
 
   void errorMessage() {
-    print(
-      '$_errorCode',
-    );
+    // print(
+    //   '$_errorCode',
+    // );
   }
 }
 
@@ -44,6 +44,8 @@ class BadRequestException implements Exception {
     int dataErrorCode = errorBody.errorCode!;
     String dataErrorMessage = errorBody.errorMessage!;
 
+    print('Ошибка' + _errorCode.toString());
+
     return '$dataErrorCode: $dataErrorMessage';
   }
 }
@@ -55,6 +57,6 @@ class UnauthorizedException implements Exception {
 
   void errorMessage() {
     /// Необходим новый токен
-    print('Необходим новый токен');
+    print('Необходим новый токен' + _errorCode.toString());
   }
 }

@@ -2,7 +2,7 @@ import 'package:where_to_go_today/src/domain/user.dart';
 import 'package:where_to_go_today/src/modules/auth/models/request/auth_by_phone_model.dart';
 import 'package:where_to_go_today/src/modules/auth/models/request/auth_via_social_model.dart';
 import 'package:where_to_go_today/src/modules/auth/models/response/auth_response_model.dart';
-import 'package:where_to_go_today/src/modules/auth/service/api/auth_api.dart';
+import 'package:where_to_go_today/src/modules/auth/services/api/auth_api.dart';
 
 import '../../models/request/register.dart';
 
