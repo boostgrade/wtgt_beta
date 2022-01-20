@@ -110,12 +110,3 @@ class _CodeScreenState extends State<CodeScreen>
     super.dispose();
   }
 }
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: CodeScreen(
-      vm: null,
-    ),
-  ));
-}
