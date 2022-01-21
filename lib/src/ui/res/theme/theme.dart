@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
 
