@@ -10,12 +10,30 @@ import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.da
 class AuthBloc extends Bloc<AuthEvent, AuthState>
     with CanThrowExceptionBlocMixin {
   String? phone;
-  String? name;
-  String? lastName;
-  DateTime? birthDate;
-  String? token;
+  String token;
 
   final AuthRepository _repository;
+
+  AuthBloc(this._repository, {this.token = ''}) : super(LoadingState()) {
+
+  on<SmsAuthEvent>(_handleSmsAuth);
+
+  on<MetaAuthEvent>(_handleMetaAuth);
+
+  on<AppleAuthEvent>(_handleAppleAuth);
+
+  on<VkAuthEvent>(_handleVkAuth);
+
+  on<GoogleAuthEvent>(_handleGoogleAuth);
+
+  on<PhoneAuthEvent>(_handlePhoneAuth);
+
+  on<LogoutEvent>(_handleLogout);
+
+  on<RegistrationEvent>(_handleRegistration);
+
+  on<SendPhoneEvent>(_handlePhone);
+  }
 
   void _handleSmsAuth(SmsAuthEvent event, Emitter emit) async {
     emit(LoadingState());
@@ -77,10 +95,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(LoadingState());
     await _repository.register(
       RegisterRequest(
-        name: name,
-        lastName: lastName,
-        phone: phone,
-        birthDate: birthDate,
+        name: event.name,
+        lastName: event.lastName,
+        phone: event.phone,
+        birthDate: event.birthDate,
       ),
     );
     emit(SuccessState());
@@ -90,28 +108,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(LoadingState());
     await _repository.register(
       //TODO: запихнуть в фаербейз
-        phone = event.phone;
+        phone = event.phone
+    );
     emit(SuccessState());
-  }
-
-  AuthBloc(this._repository) : super(LoadingState()) {
-
-    on<SmsAuthEvent>(_handleSmsAuth);
-
-    on<MetaAuthEvent>(_handleMetaAuth);
-
-    on<AppleAuthEvent>(_handleAppleAuth);
-
-    on<VkAuthEvent>(_handleVkAuth);
-
-    on<GoogleAuthEvent>(_handleGoogleAuth);
-
-    on<PhoneAuthEvent>(_handlePhoneAuth);
-
-    on<LogoutEvent>(_handleLogout);
-
-    on<RegistrationEvent>(_handleRegistration);
-
-    on<SendPhoneEvent>(_handlePhone);
   }
 }
