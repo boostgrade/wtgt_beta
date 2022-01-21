@@ -15,24 +15,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   final AuthRepository _repository;
 
   AuthBloc(this._repository, {this.token = ''}) : super(LoadingState()) {
+    on<SmsAuthEvent>(_handleSmsAuth);
 
-  on<SmsAuthEvent>(_handleSmsAuth);
+    on<MetaAuthEvent>(_handleMetaAuth);
 
-  on<MetaAuthEvent>(_handleMetaAuth);
+    on<AppleAuthEvent>(_handleAppleAuth);
 
-  on<AppleAuthEvent>(_handleAppleAuth);
+    on<VkAuthEvent>(_handleVkAuth);
 
-  on<VkAuthEvent>(_handleVkAuth);
+    on<GoogleAuthEvent>(_handleGoogleAuth);
 
-  on<GoogleAuthEvent>(_handleGoogleAuth);
+    on<PhoneAuthEvent>(_handlePhoneAuth);
 
-  on<PhoneAuthEvent>(_handlePhoneAuth);
+    on<LogoutEvent>(_handleLogout);
 
-  on<LogoutEvent>(_handleLogout);
+    on<RegistrationEvent>(_handleRegistration);
 
-  on<RegistrationEvent>(_handleRegistration);
-
-  on<SendPhoneEvent>(_handlePhone);
+    on<SendPhoneEvent>(_handlePhone);
   }
 
   void _handleSmsAuth(SmsAuthEvent event, Emitter emit) async {
@@ -42,18 +41,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleMetaAuth (event, emit) async {
+  void _handleMetaAuth(event, emit) async {
     emit(LoadingState());
-      await _repository.loginViaMeta(
-      AuthViaSocialRequest(token: token),
-      );
+    await _repository.loginViaMeta(
+      AuthViaSocialRequest(token: event.token),
+    );
     emit(SuccessState());
   }
 
   void _handleAppleAuth(event, emit) async {
     emit(LoadingState());
     await _repository.loginViaApple(
-      AuthViaSocialRequest(token: token),
+      AuthViaSocialRequest(token: event.token),
     );
     emit(SuccessState());
   }
@@ -61,7 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   void _handleVkAuth(event, emit) async {
     emit(LoadingState());
     await _repository.loginViaVk(
-      AuthViaSocialRequest(token: token),
+      AuthViaSocialRequest(token: event.token),
     );
     emit(SuccessState());
   }
@@ -69,7 +68,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   void _handleGoogleAuth(event, emit) async {
     emit(LoadingState());
     await _repository.loginViaGoogle(
-      AuthViaSocialRequest(token: token),
+      AuthViaSocialRequest(token: event.token),
     );
     emit(SuccessState());
   }
@@ -79,7 +78,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     await _repository.loginByPhone(
       AuthByPhoneRequest(
         phone: phone,
-        firebaseToken: '',
+        firebaseToken: event.token,
       ),
     );
     emit(SuccessState());
@@ -107,9 +106,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   void _handlePhone(event, emit) async {
     emit(LoadingState());
     await _repository.register(
-      //TODO: запихнуть в фаербейз
-        phone = event.phone
-    );
+        //TODO: запихнуть в фаербейз
+        phone = event.phone);
     emit(SuccessState());
   }
 }
