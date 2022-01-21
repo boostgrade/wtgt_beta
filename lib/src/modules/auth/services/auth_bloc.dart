@@ -10,11 +10,10 @@ import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.da
 class AuthBloc extends Bloc<AuthEvent, AuthState>
     with CanThrowExceptionBlocMixin {
   String? phone;
-  String token;
 
   final AuthRepository _repository;
 
-  AuthBloc(this._repository, {this.token = ''}) : super(LoadingState()) {
+  AuthBloc(this._repository) : super(LoadingState()) {
     on<SmsAuthEvent>(_handleSmsAuth);
 
     on<MetaAuthEvent>(_handleMetaAuth);
