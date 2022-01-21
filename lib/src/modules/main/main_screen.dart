@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/src/provider.dart';
+import 'package:where_to_go_today/src/di/app_dependency.dart';
+import 'package:where_to_go_today/src/modules/auth/ui/sign_in/sign_in_screen.dart';
+import 'package:where_to_go_today/src/modules/auth/ui/sign_in/sign_in_vm.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 import 'main_screen_store.dart';
 
@@ -16,6 +20,15 @@ class MainScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Builder(
+          //   builder: (context) {
+          //     return PhoneSignIn(
+          //       store:
+          //           PhoneSignInVM(context.read<AppDependencies>().errorHandler),
+          //     );
+          //   },
+          // ),
+
           BaseButton(
             onPressed: () {
               debugPrint(Status.active.toString());
