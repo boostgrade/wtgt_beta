@@ -17,81 +17,101 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
 
   final AuthRepository _repository;
 
-  AuthBloc(this._repository) : super(LoadingState()) {
-    on<SmsAuthEvent>((event, emit) async {
-      emit(LoadingState());
-      //TODO: нет запроса по авторизации по смс
-      // await _repository.
-      emit(SuccessState());
-    });
+  void _handleSmsAuth(SmsAuthEvent event, Emitter emit) async {
+    emit(LoadingState());
+    //TODO: нет запроса по авторизации по смс
+    // await _repository.
+    emit(SuccessState());
+  }
 
-    on<MetaAuthEvent>((event, emit) async {
-      emit(LoadingState());
+  void _handleMetaAuth (event, emit) async {
+    emit(LoadingState());
       await _repository.loginViaMeta(
-        AuthViaSocialRequest(token: token),
+      AuthViaSocialRequest(token: token),
       );
-      emit(SuccessState());
-    });
+    emit(SuccessState());
+  }
 
-    on<AppleAuthEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.loginViaApple(
-        AuthViaSocialRequest(token: token),
-      );
-      emit(SuccessState());
-    });
+  void _handleAppleAuth(event, emit) async {
+    emit(LoadingState());
+    await _repository.loginViaApple(
+      AuthViaSocialRequest(token: token),
+    );
+    emit(SuccessState());
+  }
 
-    on<VkAuthEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.loginViaVk(
-        AuthViaSocialRequest(token: token),
-      );
-      emit(SuccessState());
-    });
+  void _handleVkAuth(event, emit) async {
+    emit(LoadingState());
+    await _repository.loginViaVk(
+      AuthViaSocialRequest(token: token),
+    );
+    emit(SuccessState());
+  }
 
-    on<GoogleAuthEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.loginViaGoogle(
-        AuthViaSocialRequest(token: token),
-      );
-      emit(SuccessState());
-    });
+  void _handleGoogleAuth(event, emit) async {
+    emit(LoadingState());
+    await _repository.loginViaGoogle(
+      AuthViaSocialRequest(token: token),
+    );
+    emit(SuccessState());
+  }
 
-    on<PhoneAuthEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.loginByPhone(
-        AuthByPhoneRequest(
-          phone: phone,
-          firebaseToken: '',
-        ),
-      );
-      emit(SuccessState());
-    });
+  void _handlePhoneAuth(event, emit) async {
+    emit(LoadingState());
+    await _repository.loginByPhone(
+      AuthByPhoneRequest(
+        phone: phone,
+        firebaseToken: '',
+      ),
+    );
+    emit(SuccessState());
+  }
 
-    on<LogoutEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.logout();
-      emit(SuccessState());
-    });
+  void _handleLogout(event, emit) async {
+    emit(LoadingState());
+    await _repository.logout();
+    emit(SuccessState());
+  }
 
-    on<RegistrationEvent>((event, emit) async {
-      emit(LoadingState());
-      await _repository.register(
-        RegisterRequest(
-          name: name,
-          lastName: lastName,
-          phone: phone,
-          birthDate: birthDate,
-        ),
-      );
-      emit(SuccessState());
-    });
+  void _handleRegistration(event, emit) async {
+    emit(LoadingState());
+    await _repository.register(
+      RegisterRequest(
+        name: name,
+        lastName: lastName,
+        phone: phone,
+        birthDate: birthDate,
+      ),
+    );
+    emit(SuccessState());
+  }
 
-    on<SendPhoneEvent>((event, emit) {
-      emit(LoadingState());
+  void _handlePhone(event, emit) async {
+    emit(LoadingState());
+    await _repository.register(
       //TODO: запихнуть в фаербейз
-      phone = event.phone;
-      emit(SuccessState());
-    });
+        phone = event.phone;
+    emit(SuccessState());
+  }
+
+  AuthBloc(this._repository) : super(LoadingState()) {
+
+    on<SmsAuthEvent>(_handleSmsAuth);
+
+    on<MetaAuthEvent>(_handleMetaAuth);
+
+    on<AppleAuthEvent>(_handleAppleAuth);
+
+    on<VkAuthEvent>(_handleVkAuth);
+
+    on<GoogleAuthEvent>(_handleGoogleAuth);
+
+    on<PhoneAuthEvent>(_handlePhoneAuth);
+
+    on<LogoutEvent>(_handleLogout);
+
+    on<RegistrationEvent>(_handleRegistration);
+
+    on<SendPhoneEvent>(_handlePhone);
   }
 }
