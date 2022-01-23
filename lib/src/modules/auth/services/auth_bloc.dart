@@ -35,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     on<SendPhoneEvent>(_handleSendPhone);
   }
 
-  void _handlePhoneAuth(event, emit) async {
+  void _handlePhoneAuth(PhoneAuthEvent event, Emitter emit) async {
     emit(LoadingState());
     //Дождаться ответа от фаербейз
     await _repository.loginByPhone(
@@ -47,7 +47,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleMetaAuth(event, emit) async {
+  void _handleMetaAuth(MetaAuthEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.loginViaMeta(
       AuthViaSocialRequest(token: event.token),
@@ -55,7 +55,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleAppleAuth(event, emit) async {
+  void _handleAppleAuth(AppleAuthEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.loginViaApple(
       AuthViaSocialRequest(token: event.token),
@@ -63,7 +63,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleVkAuth(event, emit) async {
+  void _handleVkAuth(VkAuthEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.loginViaVk(
       AuthViaSocialRequest(token: event.token),
@@ -71,7 +71,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleGoogleAuth(event, emit) async {
+  void _handleGoogleAuth(GoogleAuthEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.loginViaGoogle(
       AuthViaSocialRequest(token: event.token),
@@ -79,7 +79,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleRegistration(event, emit) async {
+  void _handleRegistration(RegistrationEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.register(
       RegisterRequest(
@@ -92,15 +92,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleSendPhone(event, emit) async {
+  void _handleSendPhone(SendPhoneEvent event, Emitter emit) async {
     emit(LoadingState());
-    await _repository.register(
-        //TODO: запихнуть в фаербейз
-        phone = event.phone,);
+    //TODO: это добавить в фаербейз
+    await _repository.sendPhone(
+      phone: event.phone,
+    );
     emit(SuccessState());
   }
 
-  void _handleLogout(event, emit) async {
+  void _handleLogout(LogoutEvent event, Emitter emit) async {
     emit(LoadingState());
     await _repository.logout();
     emit(SuccessState());
