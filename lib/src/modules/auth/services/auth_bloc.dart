@@ -96,7 +96,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(LoadingState());
     await _repository.register(
         //TODO: запихнуть в фаербейз
-        phone = event.phone);
+        phone = event.phone,);
     emit(SuccessState());
   }
 
