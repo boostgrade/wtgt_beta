@@ -10,6 +10,8 @@ part 'sign_in_vm.g.dart';
 class PhoneSignInVM = _PhoneSignInVM with _$PhoneSignInVM;
 
 abstract class _PhoneSignInVM extends ViewModel with Store {
+  static const int phoneWithMask = 18;
+
   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
     mask: '+7 (###) ###-##-##',
   );
@@ -27,7 +29,8 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
 
   @action
   void onPhoneChangeText(String phone) {
-    sendPhoneBtnStatus = phone.length == 18 ? Status.active : Status.inactive;
+    sendPhoneBtnStatus =
+        phone.length == phoneWithMask ? Status.active : Status.inactive;
   }
 
   @action
