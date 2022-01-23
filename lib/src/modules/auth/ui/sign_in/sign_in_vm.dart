@@ -10,7 +10,7 @@ part 'sign_in_vm.g.dart';
 class PhoneSignInVM = _PhoneSignInVM with _$PhoneSignInVM;
 
 abstract class _PhoneSignInVM extends ViewModel with Store {
-  static const int phoneWithMask = 18;
+  final TextEditingController phoneTextC = TextEditingController();
 
   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
     mask: '+7 (###) ###-##-##',
@@ -19,7 +19,7 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
   @observable
   Status sendPhoneBtnStatus = Status.inactive;
 
-  final TextEditingController phoneTextC = TextEditingController();
+  static const int _phone = 10;
 
   _PhoneSignInVM(ErrorHandler errorHandler) : super(errorHandler) {
     phoneTextC.addListener(() {
@@ -29,8 +29,9 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
 
   @action
   void onPhoneChangeText(String phone) {
+    String _unmaskedText = maskFormatter.getUnmaskedText();
     sendPhoneBtnStatus =
-        phone.length == phoneWithMask ? Status.active : Status.inactive;
+        _unmaskedText.length == _phone ? Status.active : Status.inactive;
   }
 
   @action
