@@ -1,11 +1,5 @@
 abstract class AuthEvent {}
 
-class SmsAuthEvent extends AuthEvent {
-  final String code;
-
-  SmsAuthEvent(this.code);
-}
-
 class MetaAuthEvent extends AuthEvent {
 
   final String token;

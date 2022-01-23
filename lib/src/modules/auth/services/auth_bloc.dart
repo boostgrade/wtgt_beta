@@ -10,11 +10,13 @@ import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.da
 class AuthBloc extends Bloc<AuthEvent, AuthState>
     with CanThrowExceptionBlocMixin {
   String? phone;
+  String? fireBaseToken;
 
   final AuthRepository _repository;
 
   AuthBloc(this._repository) : super(LoadingState()) {
-    on<SmsAuthEvent>(_handleSmsAuth);
+    //Присвоить токен для файербейз
+    fireBaseToken = '';
 
     on<MetaAuthEvent>(_handleMetaAuth);
 
@@ -30,13 +32,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
 
     on<RegistrationEvent>(_handleRegistration);
 
-    on<SendPhoneEvent>(_handlePhone);
+    on<SendPhoneEvent>(_handleSendPhone);
   }
 
-  void _handleSmsAuth(SmsAuthEvent event, Emitter emit) async {
+  void _handlePhoneAuth(event, emit) async {
     emit(LoadingState());
-    //TODO: нет запроса по авторизации по смс
-    // await _repository.
+    //Дождаться ответа от фаербейз
+    await _repository.loginByPhone(
+      AuthByPhoneRequest(
+        phone: event.phone,
+        firebaseToken: fireBaseToken,
+      ),
+    );
     emit(SuccessState());
   }
 
@@ -72,23 +79,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handlePhoneAuth(event, emit) async {
-    emit(LoadingState());
-    await _repository.loginByPhone(
-      AuthByPhoneRequest(
-        phone: phone,
-        firebaseToken: event.token,
-      ),
-    );
-    emit(SuccessState());
-  }
-
-  void _handleLogout(event, emit) async {
-    emit(LoadingState());
-    await _repository.logout();
-    emit(SuccessState());
-  }
-
   void _handleRegistration(event, emit) async {
     emit(LoadingState());
     await _repository.register(
@@ -102,11 +92,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handlePhone(event, emit) async {
+  void _handleSendPhone(event, emit) async {
     emit(LoadingState());
     await _repository.register(
         //TODO: запихнуть в фаербейз
         phone = event.phone);
+    emit(SuccessState());
+  }
+
+  void _handleLogout(event, emit) async {
+    emit(LoadingState());
+    await _repository.logout();
     emit(SuccessState());
   }
 }
