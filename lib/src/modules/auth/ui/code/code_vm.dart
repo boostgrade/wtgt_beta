@@ -8,6 +8,7 @@ import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 
 part 'code_vm.g.dart';
 
+///ViewModel для экрана отправки кода из СМС
 class CodeScreenVm = _CodeScreenVm with _$CodeScreenVm;
 
 abstract class _CodeScreenVm extends ViewModel with Store {

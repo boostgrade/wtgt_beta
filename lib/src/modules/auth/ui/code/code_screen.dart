@@ -6,6 +6,8 @@ import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
 import 'package:where_to_go_today/src/ui/res/icons/app_images.dart';
 import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
+
+///Экран отправки кода из СМС
 class CodeScreen extends StatefulWidget {
   final CodeScreenVm vm;
 
@@ -31,7 +33,7 @@ class _CodeScreenState extends State<CodeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,9 +44,8 @@ class _CodeScreenState extends State<CodeScreen>
             Center(
               child: Image.asset(AppImages.wtgtLogo),
             ),
-            Container(
+            SizedBox(
               height: 52,
-              padding: const EdgeInsets.symmetric(vertical: 10),
               child: TextField(
                 cursorColor: ProjectColors.buttonStrokeColor,
                 controller: vm.codeController,
@@ -60,6 +61,7 @@ class _CodeScreenState extends State<CodeScreen>
                 ),
               ),
             ),
+            const SizedBox(height: 32),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: vm.countDown == 0
@@ -70,18 +72,18 @@ class _CodeScreenState extends State<CodeScreen>
                         style: AppTypography.normal16underlined,
                       ),
                     )
-                  : Row(
+                  : Text.rich(TextSpan(
                       children: [
-                        Text(
-                          AppLocalizations.of(context)!.newCodeViaName,
+                        TextSpan(
+                          text: AppLocalizations.of(context)!.newCodeViaName,
                           style: AppTypography.normal16,
                         ),
-                        Text(
-                          ': ${widget.vm.countDown}',
+                        TextSpan(
+                          text: ': ${widget.vm.countDown}',
                           style: AppTypography.timerGreen,
                         ),
                       ],
-                    ),
+                    )),
             ),
             Container(
               padding: const EdgeInsets.only(bottom: 56),
