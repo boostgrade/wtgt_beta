@@ -2,5 +2,9 @@
   "appTitle": "Куда пойти сегодня?",
   "placesTabName": "Заведения",
   "cardTabName": "Моя Карта",
-  "profileTabName": "Профиль"
+  "profileTabName": "Профиль",
+  "codeBtnName": "Отправить",
+  "codeScreenHint": "Код из смс",
+  "codeAgainName": "Запросить код повторно",
+  "newCodeViaName": "Новый код через"
 }

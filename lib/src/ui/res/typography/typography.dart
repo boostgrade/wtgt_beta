@@ -70,4 +70,11 @@ abstract class AppTypography {
     fontSize: 24.0,
     color: ProjectColors.textPrimaryColor,
   );
+
+  static const TextStyle timerGreen = TextStyle(
+    color: ProjectColors.activeColor,
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+  );
 }

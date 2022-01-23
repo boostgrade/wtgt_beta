@@ -4,28 +4,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:where_to_go_today/src/ui/base/view_model.dart';
 import 'package:where_to_go_today/src/ui/errors_handling/error_handler.dart';
-
-import '../../../../ui/uikit/base_button.dart';
+import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 
 part 'code_vm.g.dart';
-
-enum TimerState { started, expired, update }
-enum ScreenState { idle, loading, error }
 
 class CodeScreenVm = _CodeScreenVm with _$CodeScreenVm;
 
 abstract class _CodeScreenVm extends ViewModel with Store {
   static const int expirationTime = 30;
+  static const int codeLength = 6;
 
   @observable
   Status buttonStatus = Status.inactive;
   @observable
-  TimerState timerState = TimerState.started;
-  @observable
+  int countDown = expirationTime;
+
   Timer? timer;
-  @observable
-  int start = expirationTime;
-  @observable
   TextEditingController codeController = TextEditingController();
 
   _CodeScreenVm(ErrorHandler errorHandler) : super(errorHandler) {
@@ -37,14 +31,13 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   ///Запуск таймера
   @action
   void startTimer() {
-    const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(
-      oneSec,
+      const Duration(seconds: 1),
       (Timer timer) {
-        if (start == 0) {
+        if (timer.tick == expirationTime + 1) {
           timer.cancel();
         } else {
-          start--;
+          countDown--;
         }
       },
     );
@@ -53,9 +46,8 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   ///Функция изменения введенного кода
   @action
   void onChangeCodeField(String text) {
-    codeController.text.isEmpty
-        ? buttonStatus = Status.inactive
-        : buttonStatus = Status.active;
+    buttonStatus =
+        codeController.text.isEmpty ? Status.inactive : Status.active;
     if (checkCode()) {
       text = codeController.text;
     }
@@ -66,24 +58,26 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   Future<void> sendCode() async {
     if (checkCode()) {
       buttonStatus = Status.loading;
-      await const Duration(seconds: 2); //Имитируем отправку кода из СМС
+      await Future.delayed(
+        const Duration(seconds: 2),
+      ); //Имитируем отправку кода из СМС
       buttonStatus = Status.inactive;
     }
   }
 
+  ///Запросить код повторно
   @action
-  void requestCodeAgain() {
-    if (timerState == TimerState.expired) {
-      start = expirationTime;
-      timerState = TimerState.started;
+  Future<void> requestCodeAgain() async {
+    await Future.delayed(
+      const Duration(seconds: 2),
+    ); //Имитируем повторню отправку кода
+    if (countDown == 0) {
+      countDown = expirationTime;
     }
   }
 
   ///Валидация кода из СМС
   bool checkCode() {
-    bool checkStatus = false;
-    codeController.text.length < 4 ? checkStatus = true : checkStatus = false;
-
-    return checkStatus;
+    return codeController.text.length <= codeLength ? true : false;
   }
 }
