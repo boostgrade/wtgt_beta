@@ -100,7 +100,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     emit(SuccessState());
   }
 
-  void _handleLogout(emit) async {
+  void _handleLogout(event, emit) async {
     emit(LoadingState());
     await _repository.logout();
     emit(SuccessState());
