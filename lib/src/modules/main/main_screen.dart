@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,21 +16,21 @@ class MainScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BaseButton(
-            onPressed: () {
+            onPressed: () { //ignore: prefer-extracting-callbacks
               debugPrint(Status.active.toString());
             },
             status: Status.active,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () {
+            onPressed: () { //ignore: prefer-extracting-callbacks
               debugPrint(Status.inactive.toString());
             },
             status: Status.inactive,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () {
+            onPressed: () { //ignore: prefer-extracting-callbacks
               debugPrint(Status.loading.toString());
             },
             status: Status.loading,

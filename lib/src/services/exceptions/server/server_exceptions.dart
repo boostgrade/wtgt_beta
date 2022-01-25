@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:where_to_go_today/src/services/exceptions/server/parse_error.dart';
 
 /// Для преобразования ошибок сервера в ошибки приложенния,
 /// необходимо создать соответсвующие классы,
 /// расширяющие класс [Exception]
-/// с названиями, соответсвующими конкретной ошибке.
+/// с названиями, соответсвующими конкретной ошибки.
 
 /// Серверная ошибка по-умолчанию
 class ServerErrorException implements Exception {
@@ -12,31 +13,22 @@ class ServerErrorException implements Exception {
   ServerErrorException(this._errorCode);
 
   String errorMessage() {
-    print(
-      '$_errorCode',
-    );
 
     return _errorCode.toString();
   }
 }
 
 class NotFoundException implements Exception {
-  final int _errorCode;
+  final int errorCode;
 
-  NotFoundException(this._errorCode);
-
-  void errorMessage() {
-    print(
-      '$_errorCode',
-    );
-  }
+  NotFoundException(this.errorCode);
 }
 
 class BadRequestException implements Exception {
-  final int _errorCode;
+  final int errorCode;
   final Map<String, dynamic> _errorData;
 
-  BadRequestException(this._errorCode, this._errorData);
+  BadRequestException(this.errorCode, this._errorData);
 
   @override
   String toString() {
@@ -55,6 +47,6 @@ class UnauthorizedException implements Exception {
 
   void errorMessage() {
     /// Необходим новый токен
-    print('Необходим новый токен');
+    debugPrint('Необходим новый токен' + _errorCode.toString());
   }
 }
