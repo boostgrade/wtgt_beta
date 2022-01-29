@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/src/provider.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 import 'main_screen_store.dart';
 
@@ -16,23 +17,17 @@ class MainScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.active.toString());
-            },
+            onPressed: () => debugPrint(Status.active.toString()),
             status: Status.active,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.inactive.toString());
-            },
+            onPressed: () => debugPrint(Status.inactive.toString()),
             status: Status.inactive,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.loading.toString());
-            },
+            onPressed: () => debugPrint(Status.loading.toString()),
             status: Status.loading,
             label: 'Test',
           ),

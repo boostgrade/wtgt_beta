@@ -11,7 +11,7 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       name: json['name'] as String,
       lastName: json['lastName'] as String,
       phone: json['phone'] as String,
-      birthDate: DateTime.parse(json['birthDate'] as String),
+      birthDate: json['birthDate'] as String,
     );
 
 Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
@@ -20,5 +20,5 @@ Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
       'name': instance.name,
       'lastName': instance.lastName,
       'phone': instance.phone,
-      'birthDate': instance.birthDate.toIso8601String(),
+      'birthDate': instance.birthDate,
     };

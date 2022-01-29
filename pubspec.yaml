@@ -27,6 +27,7 @@ dependencies:
   # util
   equatable: ^2.0.3
   rxdart: ^0.27.2
+  mask_text_input_formatter: ^2.1.0
 
   # network
   retrofit: ^2.0.1
@@ -35,6 +36,10 @@ dependencies:
 
   #navigation
   routemaster: ^0.9.5
+
+  #storage
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
