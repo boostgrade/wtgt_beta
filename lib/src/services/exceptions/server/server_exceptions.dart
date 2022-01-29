@@ -14,6 +14,7 @@ class ServerErrorException implements Exception {
     print(
       '$_errorCode: $_errorMessage',
     );
+
     return _errorMessage;
   }
 }
@@ -28,6 +29,7 @@ class NotFoundException implements Exception {
     print(
       '$_errorCode: $_errorMessage',
     );
+
     return _errorMessage;
   }
 }
@@ -42,6 +44,7 @@ class BadRequestException implements Exception {
     print(
       '$_errorCode: $_errorMessage',
     );
+
     return _errorMessage;
   }
 }
