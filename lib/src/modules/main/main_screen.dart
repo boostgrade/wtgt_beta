@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/src/provider.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 import 'main_screen_store.dart';
 
