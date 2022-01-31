@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:where_to_go_today/src/modules/auth/models/request/auth_by_phone_model.dart';
 import 'package:where_to_go_today/src/modules/auth/models/request/auth_via_social_model.dart';
 import 'package:where_to_go_today/src/modules/auth/models/request/register.dart';
-import 'package:where_to_go_today/src/modules/auth/services/repository/auth_repository.dart';
-import 'package:where_to_go_today/src/services/base/throw_exception_bloc.dart';
 import 'package:where_to_go_today/src/modules/auth/services/events/auth_event.dart';
+import 'package:where_to_go_today/src/modules/auth/services/repository/auth_repository.dart';
 import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.dart';
+import 'package:where_to_go_today/src/services/base/throw_exception_bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState>
     with CanThrowExceptionBlocMixin {
@@ -95,9 +95,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   void _handleSendPhone(SendPhoneEvent event, Emitter emit) async {
     emit(LoadingState());
     //TODO: это добавить в фаербейз
-    await _repository.sendPhone(
+    /*await _repository.sendPhone(
       phone: event.phone,
-    );
+    );*/
     emit(SuccessState());
   }
 
