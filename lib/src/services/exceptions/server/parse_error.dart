@@ -8,5 +8,6 @@ class ErrorBody {
     return ErrorBody(json['errorCode'], json['errorMessage']);
   }
 
-  ErrorBody._internal(this.errorCode, this.errorMessage);
+  //The declaration '_internal' isn't referenced
+  // ErrorBody._internal(this.errorCode, this.errorMessage);
 }

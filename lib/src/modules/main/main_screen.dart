@@ -1,17 +1,44 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 import 'main_screen_store.dart';
 
 /// Глвный экран с табами
 class MainScreen extends StatelessWidget {
   final MainScreenStore store;
   static const double _labelSize = 12.0;
-
   // TODO(artem-zaitsev): здесь будут храниться экраны, когда появятся
   final List<Widget> _screens = [
+    Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BaseButton(
+            onPressed: () { //ignore: prefer-extracting-callbacks
+              debugPrint(Status.active.toString());
+            },
+            status: Status.active,
+            label: 'Test',
+          ),
+          BaseButton(
+            onPressed: () { //ignore: prefer-extracting-callbacks
+              debugPrint(Status.inactive.toString());
+            },
+            status: Status.inactive,
+            label: 'Test',
+          ),
+          BaseButton(
+            onPressed: () { //ignore: prefer-extracting-callbacks
+              debugPrint(Status.loading.toString());
+            },
+            status: Status.loading,
+            label: 'Test',
+          ),
+        ],
+      ),
+    ),
     const Center(
       child: Text('Screen 1'),
     ),
