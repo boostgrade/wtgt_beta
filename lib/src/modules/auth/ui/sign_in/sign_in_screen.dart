@@ -20,24 +20,29 @@ class _PhoneSignInState extends State<PhoneSignIn>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          inputFormatters: [vm.maskFormatter],
-          controller: vm.phoneTextC,
-          keyboardType: TextInputType.phone,
+    return Scaffold(
+      appBar: null,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TextField(
+              inputFormatters: [vm.maskFormatter],
+              controller: vm.phoneTextC,
+              keyboardType: TextInputType.phone,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Observer(
+              builder: (ctx) => BaseButton(
+                label: AppLocalizations.of(context)!.buttonSend,
+                onPressed: vm.sendPhone,
+                status: vm.sendPhoneBtnStatus,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
-        Observer(
-          builder: (ctx) => BaseButton(
-            label: AppLocalizations.of(context)!.buttonSend,
-            onPressed: vm.sendPhone,
-            status: vm.sendPhoneBtnStatus,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
