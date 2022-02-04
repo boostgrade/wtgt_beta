@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:where_to_go_today/src/modules/auth/services/auth_bloc.dart';
+import 'package:where_to_go_today/src/modules/auth/services/events/auth_event.dart';
 import 'package:where_to_go_today/src/ui/base/view_model.dart';
 import 'package:where_to_go_today/src/ui/errors_handling/error_handler.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
@@ -40,7 +41,6 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
   @action
   void sendPhone() {
     sendPhoneBtnStatus = Status.loading;
-
-    /// TODO: логика отправки
+    _block.add(SendPhoneEvent(phoneTextC.text));
   }
 }
