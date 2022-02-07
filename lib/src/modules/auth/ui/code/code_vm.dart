@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:where_to_go_today/src/modules/auth/services/events/auth_event.dart';
 import 'package:where_to_go_today/src/ui/base/view_model.dart';
 import 'package:where_to_go_today/src/ui/errors_handling/error_handler.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
+
+import '../../services/auth_bloc.dart';
 
 part 'code_vm.g.dart';
 
@@ -22,8 +25,9 @@ abstract class _CodeScreenVm extends ViewModel with Store {
 
   Timer? timer;
   TextEditingController codeController = TextEditingController();
+  final AuthBloc _block;
 
-  _CodeScreenVm(ErrorHandler errorHandler) : super(errorHandler) {
+  _CodeScreenVm(ErrorHandler errorHandler, this._block) : super(errorHandler) {
     codeController.addListener(() {
       onChangeCodeField(codeController.text);
     });
@@ -58,17 +62,14 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   @action
   Future<void> sendCode() async {
     if (checkCode()) {
-      buttonStatus = Status.loading;
-      await Future.delayed(
-        const Duration(seconds: 2),
-      ); //Имитируем отправку кода из СМС
-      buttonStatus = Status.inactive;
+      _block.add(SendCodeEvent(codeController.text));
     }
   }
 
   ///Запросить код повторно
   @action
   Future<void> requestCodeAgain() async {
+    //TODO: Тут надо ResendCodeEvent или оставить как есть?
     await Future.delayed(
       const Duration(seconds: 2),
     ); //Имитируем повторню отправку кода

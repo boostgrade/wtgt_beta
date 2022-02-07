@@ -33,6 +33,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
     on<RegistrationEvent>(_handleRegistration);
 
     on<SendPhoneEvent>(_handleSendPhone);
+
+    on<SendCodeEvent>(_handleSendCode);
   }
 
   void _handlePhoneAuth(PhoneAuthEvent event, Emitter emit) async {
@@ -95,9 +97,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
   void _handleSendPhone(SendPhoneEvent event, Emitter emit) async {
     emit(LoadingState());
     //TODO: это добавить в фаербейз
-    /*await _repository.sendPhone(
+    /* await _repository.sendPhone(
       phone: event.phone,
-    );*/
+     );*/
+    emit(SuccessState());
+  }
+
+  void _handleSendCode(SendCodeEvent event, Emitter emit) async {
+    emit(LoadingState());
+    //TODO: это добавить в фаербейз
+    /* await _repository.sendCode(
+      phone: event.code,
+     );*/
     emit(SuccessState());
   }
 
