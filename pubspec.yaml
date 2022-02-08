@@ -36,6 +36,11 @@ dependencies:
   #navigation
   routemaster: ^0.9.5
 
+  #service
+  firebase_core: ^1.11.0
+  firebase_auth: ^3.3.5
+  flutterfire_cli: ^0.1.1+2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

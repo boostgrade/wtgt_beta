@@ -8,6 +8,7 @@ import 'package:where_to_go_today/src/ui/errors_handling/error_handler.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
 
 import '../../services/auth_bloc.dart';
+import '../../services/states/auth_state.dart';
 
 part 'code_vm.g.dart';
 
@@ -25,12 +26,13 @@ abstract class _CodeScreenVm extends ViewModel with Store {
 
   Timer? timer;
   TextEditingController codeController = TextEditingController();
-  final AuthBloc _block;
+  final AuthBloc _bloc;
 
-  _CodeScreenVm(ErrorHandler errorHandler, this._block) : super(errorHandler) {
+  _CodeScreenVm(ErrorHandler errorHandler, this._bloc) : super(errorHandler) {
     codeController.addListener(() {
       onChangeCodeField(codeController.text);
     });
+    observeBloc<AuthState, AuthBloc>(_bloc, _buttonState);
   }
 
   ///Запуск таймера
@@ -62,7 +64,7 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   @action
   Future<void> sendCode() async {
     if (checkCode()) {
-      _block.add(SendCodeEvent(codeController.text));
+      _bloc.add(SendCodeEvent(codeController.text));
     }
   }
 
@@ -81,5 +83,15 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   ///Валидация кода из СМС
   bool checkCode() {
     return codeController.text.length <= codeLength ? true : false;
+  }
+
+  void _buttonState(AuthState state) {
+    if (state is LoadingState) {
+      buttonStatus = Status.loading;
+    } else if (state is SuccessState) {
+      buttonStatus = Status.active;
+    } else {
+      buttonStatus = Status.inactive;
+    }
   }
 }
