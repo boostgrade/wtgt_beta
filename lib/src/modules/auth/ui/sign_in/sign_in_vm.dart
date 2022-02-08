@@ -26,6 +26,8 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
   final AuthBloc _block;
 
   _PhoneSignInVM(this._block, ErrorHandler errorHandler) : super(errorHandler) {
+    observeBloc<AuthBloc>(_bloc, (p0) { })
+
     phoneTextC.addListener(() {
       onPhoneChangeText(phoneTextC.text);
     });
