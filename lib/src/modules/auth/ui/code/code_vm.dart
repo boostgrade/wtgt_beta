@@ -71,10 +71,7 @@ abstract class _CodeScreenVm extends ViewModel with Store {
   ///Запросить код повторно
   @action
   Future<void> requestCodeAgain() async {
-    //TODO: Тут надо ResendCodeEvent или оставить как есть?
-    await Future.delayed(
-      const Duration(seconds: 2),
-    ); //Имитируем повторню отправку кода
+    _bloc.add(SendPhoneEvent(_bloc.phone!));
     if (countDown == 0) {
       countDown = expirationTime;
     }
