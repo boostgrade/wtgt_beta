@@ -51,5 +51,9 @@
               <data android:scheme="@string/fb_login_protocol_scheme" /> 
             </intent-filter>
          </activity>
+         <activity android:name="com.vk.sdk.VKServiceActivity"
+            android:label="ServiceActivity"
+            android:theme="@style/VK.Transparent" >
+          </activity>
     </application>
 </manifest>

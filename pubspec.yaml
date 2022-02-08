@@ -32,6 +32,7 @@ dependencies:
   retrofit: ^2.0.1
   json_annotation: ^4.1.0
   dio: ^4.0.1
+  flutter_login_vk: ^2.1.0
 
   #navigation
   routemaster: ^0.9.5
