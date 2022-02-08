@@ -63,7 +63,6 @@ class _CodeScreenState extends State<CodeScreen>
             ),
             const SizedBox(height: 32),
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
               child: vm.countDown == 0
                   ? InkWell(
                       onTap: () => widget.vm.requestCodeAgain(),
