@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'auth_by_phone_model.g.dart';
+
 ///Модель данных для запроса на авторизацию через телефон
 @JsonSerializable()
 class AuthByPhoneRequest {

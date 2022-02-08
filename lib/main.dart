@@ -1,7 +1,7 @@
-import 'package:where_to_go_today/src/app/ui/app_store.dart';
-import 'package:where_to_go_today/src/di/app_dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:where_to_go_today/src/app/ui/app_store.dart';
+import 'package:where_to_go_today/src/di/app_dependency.dart';
 
 import 'src/app/ui/app.dart';
 

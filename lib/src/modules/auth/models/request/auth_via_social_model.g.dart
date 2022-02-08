@@ -9,7 +9,7 @@ part of 'auth_via_social_model.dart';
 AuthViaSocialRequest _$AuthViaSocialRequestFromJson(
         Map<String, dynamic> json) =>
     AuthViaSocialRequest(
-      token: json['token'] as String,
+      token: json['token'] as String?,
     );
 
 Map<String, dynamic> _$AuthViaSocialRequestToJson(

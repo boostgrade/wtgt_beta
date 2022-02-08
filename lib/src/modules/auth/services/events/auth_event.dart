@@ -47,8 +47,13 @@ class RegistrationEvent extends AuthEvent {
 }
 
 class SendPhoneEvent extends AuthEvent {
-
   final String phone;
 
   SendPhoneEvent(this.phone);
+}
+
+class SendCodeEvent extends AuthEvent {
+  final String code;
+
+  SendCodeEvent(this.code);
 }

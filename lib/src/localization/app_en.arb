@@ -5,5 +5,9 @@
   },
   "placesTabName": "Places",
   "cardTabName": "My Card",
-  "profileTabName": "Profile"
+  "profileTabName": "Profile",
+  "codeBtnName": "Send",
+  "codeScreenHint": "Code from SMS",
+  "codeAgainName": "Request the code again",
+  "newCodeViaName": "New code via"
 }
