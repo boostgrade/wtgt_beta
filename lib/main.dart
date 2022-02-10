@@ -10,7 +10,7 @@ void main() async {
   final globalDeps = AppDependencies();
   await globalDeps.init();
 
-  iniHive();
+  await iniHive();
 
   runApp(
     Provider(
