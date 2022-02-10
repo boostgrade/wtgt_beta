@@ -36,6 +36,10 @@ dependencies:
   #navigation
   routemaster: ^0.9.5
 
+  #storeg
+  hive: ^2.0.5
+  hive_flutter: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,6 +51,7 @@ dev_dependencies:
   dart_code_metrics: ^4.2.1
   retrofit_generator: ^2.0.1
   json_serializable: ^5.0.2
+  hive_generator: ^1.1.1
 
 flutter:
   uses-material-design: true
