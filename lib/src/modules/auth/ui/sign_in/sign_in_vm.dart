@@ -47,5 +47,13 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
     _block.add(SendPhoneEvent(phoneTextC.text));
   }
 
-  void _handleStates(AuthState state) {}
+  void _handleStates(AuthState state) {
+    if (state is LoadingState) {
+      print('Loading state');
+    } else if (state is SuccessState) {
+      print('Success state');
+    } else {
+      print('Error state');
+    }
+  }
 }
