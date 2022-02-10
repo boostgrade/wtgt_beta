@@ -3,6 +3,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mobx/mobx.dart';
 import 'package:where_to_go_today/src/modules/auth/services/auth_bloc.dart';
 import 'package:where_to_go_today/src/modules/auth/services/events/auth_event.dart';
+import 'package:where_to_go_today/src/modules/auth/services/states/auth_state.dart';
 import 'package:where_to_go_today/src/ui/base/view_model.dart';
 import 'package:where_to_go_today/src/ui/errors_handling/error_handler.dart';
 import 'package:where_to_go_today/src/ui/uikit/base_button.dart';
@@ -26,7 +27,7 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
   final AuthBloc _block;
 
   _PhoneSignInVM(this._block, ErrorHandler errorHandler) : super(errorHandler) {
-    observeBloc<AuthBloc>(_bloc, (p0) { })
+    observeBloc<AuthState, AuthBloc>(_block, _handleStates);
 
     phoneTextC.addListener(() {
       onPhoneChangeText(phoneTextC.text);
@@ -45,4 +46,6 @@ abstract class _PhoneSignInVM extends ViewModel with Store {
     sendPhoneBtnStatus = Status.loading;
     _block.add(SendPhoneEvent(phoneTextC.text));
   }
+
+  void _handleStates(AuthState state) {}
 }
