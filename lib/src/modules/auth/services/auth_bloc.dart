@@ -94,13 +94,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>
 
   void _handleSendPhone(SendPhoneEvent event, Emitter emit) async {
     emit(LoadingState());
-    //TODO: это добавить в фаербейз
-
-    // ignore: avoid_print
-    print(event);
-    // await _repository.sendPhone(
-    //   phone: event.phone,
-    // );
     emit(SuccessState());
   }
 
