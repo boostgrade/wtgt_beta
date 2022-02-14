@@ -13,7 +13,6 @@ class ServerErrorException implements Exception {
   ServerErrorException(this._errorCode);
 
   String errorMessage() {
-
     return _errorCode.toString();
   }
 }

@@ -16,23 +16,17 @@ class MainScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.active.toString());
-            },
+            onPressed: () => debugPrint(Status.active.toString()),
             status: Status.active,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.inactive.toString());
-            },
+            onPressed: () => debugPrint(Status.inactive.toString()),
             status: Status.inactive,
             label: 'Test',
           ),
           BaseButton(
-            onPressed: () { //ignore: prefer-extracting-callbacks
-              debugPrint(Status.loading.toString());
-            },
+            onPressed: () => debugPrint(Status.loading.toString()),
             status: Status.loading,
             label: 'Test',
           ),
