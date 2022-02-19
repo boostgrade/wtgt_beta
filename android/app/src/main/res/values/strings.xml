@@ -5,3 +5,7 @@
    <string name="app_name">Where To Go Today?</string> 
 
 </resources>
+
+<resources>
+    <integer name="com_vk_sdk_AppId">7994670</integer>
+</resources>
