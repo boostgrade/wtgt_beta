@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:where_to_go_today/src/ui/res/colors/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:where_to_go_today/src/ui/res/typography/typography.dart';
 
+/// Виджет элемента с локацией
 class LocationItem extends StatefulWidget {
   final String locationName;
   final String locationLat;
@@ -23,7 +26,7 @@ class _LocationItemState extends State<LocationItem> {
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
-          color: const Color.fromRGBO(235, 206, 12, 1),
+          color: ProjectColors.primaryDarkColor,
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
@@ -35,9 +38,7 @@ class _LocationItemState extends State<LocationItem> {
           children: [
             Text(
               AppLocalizations.of(context)!.myLocations + widget.locationName,
-              style: const TextStyle(
-                fontSize: 18,
-              ),
+              style: AppTypography.normal18,
             ),
             RichText(
               text: TextSpan(

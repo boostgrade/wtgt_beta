@@ -8,37 +8,27 @@ class LocationsVM = _LocationsVM with _$LocationsVM;
 abstract class _LocationsVM with Store {
   /// Проверка на включение сервиса геолокации
   Future<bool> checkGeoServiceEnable() async {
-    bool _serviceEnabled;
-    _serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    final bool _serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
     if (!_serviceEnabled) {
       CommonSnackBar('Сервис геолокации выключен');
-      _serviceEnabled = false;
-
-      return _serviceEnabled;
-    } else {
-      _serviceEnabled = true;
-
-      return _serviceEnabled;
     }
+
+    return _serviceEnabled;
   }
 
   /// Получение текущей позиции
   @action
   Future<Position> gettingCurrentPosition() async {
-    Position _position = await Geolocator.getCurrentPosition(
+    return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-
-    return _position;
   }
 
   /// Получение полседней известной позиции если была доступна
   @action
   Future<Position?> gettingLastPosition() async {
-    Position? _position = await Geolocator.getLastKnownPosition();
-
-    return _position;
+    return await Geolocator.getLastKnownPosition();
   }
 
   /// Определение позиии
@@ -69,6 +59,6 @@ abstract class _LocationsVM with Store {
       }
     }
 
-    return await Geolocator.getCurrentPosition();
+    return Geolocator.getCurrentPosition();
   }
 }
