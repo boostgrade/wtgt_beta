@@ -6,5 +6,7 @@
   "placesTabName": "Places",
   "cardTabName": "My Card",
   "profileTabName": "Profile",
-  "buttonSend": "Send"
+  "buttonSend": "Send",
+  "myLocations": "My locations",
+  "locationItem": "Location "
 }

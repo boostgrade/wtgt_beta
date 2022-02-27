@@ -3,5 +3,7 @@
   "placesTabName": "Заведения",
   "cardTabName": "Моя Карта",
   "profileTabName": "Профиль",
-  "buttonSend": "Отправить"
+  "buttonSend": "Отправить",
+  "myLocations": "Мои локации",
+  "locationItem": "Локация "
 }
